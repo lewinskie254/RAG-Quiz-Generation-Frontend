@@ -82,7 +82,7 @@
 /* ---------------Input Field Component ----------------------*/ 
 
 .input-field{
-  width: 80%;
+  width: 90%;
   padding: 0.8rem 1rem;
   font-size: 1rem;
   margin-bottom: 1rem;
@@ -99,4 +99,18 @@
 
 .btn-wrapper {
   margin-top: 20px;
+}
+
+.title-wrapper {
+    justify-content: center;
+    justify-items: center;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+.title-text {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 3rem;
+    color: var(--shaded-white);
 }

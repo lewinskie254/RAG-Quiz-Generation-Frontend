@@ -1,6 +1,9 @@
 import InputField from "../components/InputField";
 import "../css/login.css";
 import Button from "../components/button";
+import Title from "../components/Title";
+
+
 const Login = () => {
   return (
     <div className="container">
@@ -9,6 +12,7 @@ const Login = () => {
           <img src="src/assets/logo.jpg" alt="Logo" />
         </div>
         <div className="input-div">
+            <Title title="Login Page" class="blue"/>
           <div className="input-section">
             <InputField placeholder="Username" />
             <InputField placeholder="Password"  type = "password"/>
