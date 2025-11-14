@@ -1,3 +1,15 @@
+:root {
+  --bluish-color: #147CA6;
+  --input-focus-bg: #fafcfc; 
+  --input-focus-border: #E4EEF2; 
+  --pure-white: #ffffff; 
+  --shaded-white: #E4EEF2; 
+  --almost-black: #262626; 
+}
+
+
+
+
 /* Container for the whole page */
 .container {
   width: 100vw;
@@ -19,7 +31,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #fff; /* optional background color */
+  background-color: var(--pure-white); /* optional background color */
 }
 
 .logo-div img {
@@ -36,27 +48,55 @@
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  background-color: #ffffff; /* optional */
+  background-color: var(--bluish-color); /* optional */
 }
 
-.input-div input {
+
+
+.btn {
+    font-family: "Bebas Neue", sans-serif;
+    color: var(--pure-white);
+    background-color: var(--bluish-color);
+    padding: 10px 40px;
+    font-size: 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+
+.btn:hover {
+    color: var(--pure-white);
+    background-color: var(--almost-black);
+    border: 2px solid var(--pure-white);
+}
+
+.input-section {
+    background-color: var(--shaded-white);
+    padding: 40px 60px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px #939393 inset;
+}
+
+
+/* ---------------Input Field Component ----------------------*/ 
+
+.input-field{
   width: 80%;
   padding: 0.8rem 1rem;
   font-size: 1rem;
   margin-bottom: 1rem;
+  border: none; 
+  outline: none;
 }
 
-.btn {
-    color: #147CA6;
-    background-color: #fff;
-    padding: 10px 40px;
-    margin-top: 20px;
-    font-size: 1.4rem;
-    border-radius: 5px;
+.input-field:focus {
+    outline: 1px solid var(--almost-black);
+    border: none; 
+    background-color: var(--input-focus-bg);
 }
 
-.input-section {
-    background-color: #147CA6;
-    padding: 40px 60px;
-    border-radius: 10px;
+
+.btn-wrapper {
+  margin-top: 20px;
 }
