@@ -5,6 +5,9 @@
   --pure-white: #ffffff; 
   --shaded-white: #E4EEF2; 
   --almost-black: #262626; 
+  --box-shadow-color: #939393; 
+  --dark-green-color: #148BA6; 
+  --light-green-color: #A7F2EB; 
 }
 
 
@@ -85,7 +88,7 @@
     background-color: var(--shaded-white);
     padding: 40px 60px;
     border-radius: 10px;
-    box-shadow: 10px 10px 10px #939393 inset;
+    box-shadow: 10px 10px 10px var(--box-shadow-color) inset;
 }
 
 
@@ -174,4 +177,70 @@
   margin-top: 2rem;
   height: 2px;
   background-color: var(--pure-white);
+}
+
+.dashboard {
+  display: flex;
+  min-width: 100%;
+  background-color: var(--pure-white);
+}
+
+
+.dashboard-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+   place-items: center; 
+   padding-inline: 5%;
+}
+
+
+.card {
+  width: 400px;
+  height: 250px;
+  background-color: var(--shaded-white);
+  margin: 20px;
+  border-radius: 20px;
+  box-shadow: 10px 10px 10px var(--box-shadow-color);
+  padding: 20px;
+}
+
+.card-content {
+  display: flex;
+  gap: 20px;
+}
+
+.score-tab {
+  width: 50%;
+  padding: 2em;
+  background-color: var(--pure-white);
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px var(--box-shadow-color) inset;
+}
+
+.score-heading{ 
+  color: var(--bluish-color);
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2.5rem;
+}
+
+.score-paragraph {
+  font-family: "Montserrat", sans-serif;
+}
+
+.out-of-tag {
+  font-weight: bold;
+  color: var(--almost-black);
+  font-size: 1.2rem;
+}
+
+.score-description {
+  place-content: center;
+
+}
+
+.score-description-title {
+  text-align: center;
+  font-size: 2rem;
+  font-family: "Bebas Neue", sans-serif;
+  color: var(--bluish-color);
 }
