@@ -156,16 +156,22 @@
 
 .side-panel-button {
   border-bottom: 2px solid var(--pure-white);
-  padding: 10px 20px;
+  padding: 20px 40px;
   cursor: pointer;
   transition: all .5s ease;
   color: var(--pure-white);
   font-family: "Montserrat", sans-serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .side-panel-button:hover {
   background-color: var(--pure-white);
   color: var(--bluish-color);
   font-weight: bold;
+}
+
+.side-panel hr {
+  margin-top: 2rem;
+  height: 2px;
+  background-color: var(--pure-white);
 }

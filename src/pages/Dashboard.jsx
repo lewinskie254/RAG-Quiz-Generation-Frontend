@@ -10,6 +10,7 @@ const Dashboard = () => {
                 <aside className="panel">
                     <ul className="side-panel">
                         <Title title="Event Planners Alliance"/>
+                        <hr className='side-panel-underline'/>
                         <SidePanelBtn title="Dashboard"/>
                         <SidePanelBtn title="Quizzes"/>
                         <SidePanelBtn title="Field Placement"/>
