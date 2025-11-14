@@ -1,7 +1,72 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-.bebas-neue-regular {
-  font-family: "Bebas Neue", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+/* -------------------- TABLETS (≤ 1024px) -------------------- */
+@media (max-width: 1024px) {
+  .login {
+    flex-direction: column;   /* stack image on top */
+    height: auto;
+  }
+
+  .logo-div {
+    width: 100%;
+    height: 40vh;
+  }
+
+  .input-div {
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .input-section {
+    padding: 30px 40px;
+  }
+
+  .title-text {
+    font-size: 2.5rem;
+  }
+}
+
+/* -------------------- LARGE PHONES (≤ 768px) -------------------- */
+@media (max-width: 768px) {
+  .logo-div img {
+    width: 70%;
+    height: auto;
+  }
+
+  .input-section {
+    padding: 25px 30px;
+  }
+
+  .btn {
+    font-size: 1.6rem;
+    padding: 10px 30px;
+  }
+
+  .input-field {
+    width: 100%;
+  }
+}
+
+/* -------------------- SMALL PHONES (≤ 480px) -------------------- */
+@media (max-width: 480px) {
+  .logo-div {
+    height: 30vh;
+  }
+
+  .title-text {
+    font-size: 2rem;
+  }
+
+  .input-section {
+    padding: 20px 20px;
+  }
+
+  .btn {
+    font-size: 1.4rem;
+    padding: 8px 25px;
+  }
+
+  .bottom-register-text {
+    font-size: 0.9rem;
+  }
 }
