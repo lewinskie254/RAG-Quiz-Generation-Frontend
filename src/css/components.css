@@ -141,4 +141,31 @@
     text-decoration: underline;
 }
 
+/*------------------SIDE PANEL BUTTONS COMPONENTS ---------------*/ 
 
+.panel {
+  background-color: var(--bluish-color);
+  color: var(--pure-white);
+  height: 100vh;
+  width: 25vw;
+}
+
+.side-panel-button:nth-child(0) {
+  border-top: 2px solid var(--pure-white);
+}
+
+.side-panel-button {
+  border-bottom: 2px solid var(--pure-white);
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all .5s ease;
+  color: var(--pure-white);
+  font-family: "Montserrat", sans-serif;
+  font-size: 2rem;
+}
+
+.side-panel-button:hover {
+  background-color: var(--pure-white);
+  color: var(--bluish-color);
+  font-weight: bold;
+}
