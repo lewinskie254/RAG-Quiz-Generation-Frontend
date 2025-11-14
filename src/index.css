@@ -2,7 +2,7 @@
 
 /* -------------------- TABLETS (≤ 1024px) -------------------- */
 @media (max-width: 1024px) {
-  .login {
+  .login, .register {
     flex-direction: column;   /* stack image on top */
     height: auto;
   }

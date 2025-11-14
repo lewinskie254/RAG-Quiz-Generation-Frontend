@@ -1,5 +1,5 @@
 import InputField from "../components/InputField";
-import "../css/login.css";
+import "../css/components.css";
 import Button from "../components/button";
 import Title from "../components/Title";
 import LoginOrRegister from "../components/LoginOrRegister";
@@ -13,7 +13,7 @@ const Login = () => {
           <img src="src/assets/logo.jpg" alt="Logo" />
         </div>
         <div className="input-div">
-            <Title title="Login Page" class="blue"/>
+            <Title title="Login Page"/>
           <div className="input-section">
             <InputField placeholder="Username" />
             <InputField placeholder="Password"  type = "password"/>
