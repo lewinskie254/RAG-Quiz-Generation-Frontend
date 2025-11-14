@@ -2,6 +2,7 @@ import InputField from "../components/InputField";
 import "../css/login.css";
 import Button from "../components/button";
 import Title from "../components/Title";
+import LoginOrRegister from "../components/LoginOrRegister";
 
 
 const Login = () => {
@@ -17,6 +18,7 @@ const Login = () => {
             <InputField placeholder="Username" />
             <InputField placeholder="Password"  type = "password"/>
             <Button name="Login"/> 
+            <LoginOrRegister mainText= "New to EPA? " anchorText="Register Here" href="https://www.google.com" />
           </div>
         </div>
       </div>

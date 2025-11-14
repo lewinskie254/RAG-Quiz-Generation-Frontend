@@ -114,3 +114,19 @@
     font-size: 3rem;
     color: var(--shaded-white);
 }
+
+.bottom-register-text {
+    margin-top: 10px;
+}
+
+.bottom-register-text {
+    margin-top: 1.5rem;
+    font-family: "Montserrat", sans-serif;
+}
+
+.login-or-register {
+    color: var(--bluish-color);
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: underline;
+}
