@@ -1,7 +1,7 @@
 import '../css/components.css'
 import SidePanelBtn from '../components/SidePanelBtn';
 import Title from '../components/Title';
-
+import ProgressBar from '../components/ProgressBar';
 
 const Dashboard = () => {
     return (
@@ -28,9 +28,7 @@ const Dashboard = () => {
                             <h2 className='score-description-title'>Units Completed</h2>
                         </div>
                     </div>
-                    <div className="progress-bar">
-
-                    </div>
+                    <ProgressBar progressWidth='80%' progressAmount = '80%' /> 
                   </div>
                   <div className="card">
                         <h1>card 2</h1>
