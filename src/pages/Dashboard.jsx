@@ -1,7 +1,7 @@
 import '../css/components.css'
 import SidePanelBtn from '../components/SidePanelBtn';
 import Title from '../components/Title';
-import ProgressBar from '../components/ProgressBar';
+import ProgressCard from '../components/ProgressCard';
 
 const Dashboard = () => {
     return (
@@ -18,21 +18,22 @@ const Dashboard = () => {
                     </ul>
                 </aside>
                 <div className="dashboard-content">
-                  <div className="card">
-                    <div className="card-content">
-                        <div className="score-tab">
-                            <h1 className='score-heading'>20</h1>
-                            <p className='score-paragraph'>Over <span className='out-of-tag'> 50</span> </p>
-                        </div>
-                        <div className="score-description">
-                            <h2 className='score-description-title'>Units Completed</h2>
-                        </div>
-                    </div>
-                    <ProgressBar progressWidth='80%' progressAmount = '80%' /> 
-                  </div>
-                  <div className="card">
-                        <h1>card 2</h1>
-                  </div>
+                  <ProgressCard 
+                        currentScore="2"
+                        outOfTerm = "Over"
+                        totalScore = "12"
+                        description = "Units Covered"
+                        progressWidth = {`${Math.round((2 / 12 * 100)).toString()}%`}
+                        progressAmount={`${Math.round((2 / 12 * 100)).toString()}%`}
+                  /> 
+                  <ProgressCard 
+                        currentScore="49"
+                        outOfTerm = "Over"
+                        totalScore = "80"
+                        description = "Quiz Scores"
+                        progressWidth = {`${Math.round((49 / 80 * 100)).toString()}%`}
+                        progressAmount={`${Math.round((45 / 80 * 100)).toString()}%`}
+                  /> 
                   <div className="card">
                         <h1>card 3</h1>
                   </div>
