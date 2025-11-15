@@ -23,16 +23,12 @@ const Dashboard = () => {
                         outOfTerm = "Over"
                         totalScore = "12"
                         description = "Units Covered"
-                        progressWidth = {`${Math.round((2 / 12 * 100)).toString()}%`}
-                        progressAmount={`${Math.round((2 / 12 * 100)).toString()}%`}
                   /> 
                   <ProgressCard 
                         currentScore="49"
                         outOfTerm = "Over"
                         totalScore = "80"
                         description = "Quiz Scores"
-                        progressWidth = {`${Math.round((49 / 80 * 100)).toString()}%`}
-                        progressAmount={`${Math.round((45 / 80 * 100)).toString()}%`}
                   /> 
                   <div className="card">
                         <h1>card 3</h1>
