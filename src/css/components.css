@@ -489,6 +489,17 @@
   margin-inline: 10px;
 }
 
+.essay-answer {
+  min-height: 100px;
+  border: 2px solid var(--bluish-color);
+  outline: none;
+  padding: 10px;
+  font-family: var(--montserrat-font-family);
+  color: var(--almost-black);
+  font-size: 0.8em;
+  border-radius: 10px;
+}
+
 
 /* -------------------- TABLETS (≤1024px) -------------------- */
 @media (max-width: 1024px) {
