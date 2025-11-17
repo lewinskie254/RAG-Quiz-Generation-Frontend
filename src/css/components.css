@@ -358,6 +358,112 @@
   background-color: var(--pure-white);
 }
 
+.quizzes-content{
+  display: flex;
+  padding: 20px;
+  width: 70vw;
+}
+
+.question-and-answer{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.question-card{
+  min-height: 150px;
+  width: 100%;
+  background-color: var(--bluish-color);
+  border-radius: 10px;
+  color: var(--shaded-white);
+  padding: 1em;
+  font-size: 2rem;
+  font-family: var(--montserrat-font-family);
+  font-weight: bold;
+}
+
+.question-title{
+  font-family: var(--bebas-font-family);
+}
+
+
+.answer-card{
+  background-color: var(--shaded-white);
+  min-height: 200px;
+  border-radius: 10px;
+  margin: 1em;
+  color: var(--bluish-color);
+  padding: 20px;
+}
+
+.answer-title{
+  font-size: 2.5em;
+  font-family: var(--bebas-font-family);
+}
+
+.multiple-choice-answers{
+  text-align: start;
+  font-size: 1.5em;
+  display: flex;
+}
+
+.answer-check-box{
+  margin-inline: 5px;
+}
+
+.check-container {
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  cursor: pointer;
+  gap: 10px;
+  user-select: none;
+}
+
+/* Hide default checkbox */
+.check-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Custom box */
+.checkmark {
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  border: 2px solid var(--bluish-color);
+  background-color: var(--pure-white);
+  display: inline-block;
+  transition: 0.2s;
+  position: relative;
+}
+
+/* Checkmark (tick) */
+.checkmark::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+  padding: 2.5px;
+}
+
+/* Checked state */
+.check-container input:checked ~ .checkmark {
+  background-color: var(--bluish-color);
+  border-color: var(--bluish-color);
+}
+
+.check-container input:checked ~ .checkmark::after {
+  opacity: 1;
+}
+
 
 /* -------------------- TABLETS (≤1024px) -------------------- */
 @media (max-width: 1024px) {
