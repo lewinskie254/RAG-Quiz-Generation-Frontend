@@ -1,78 +1,115 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-/* -------------------- TABLETS (≤ 1024px) -------------------- */
+/* -------------------- DASHBOARD — TABLETS (≤ 1024px) -------------------- */
 @media (max-width: 1024px) {
-  .login, .register {
-    flex-direction: column;   /* stack image on top */
+  .dashboard {
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: auto;
+  }
+
+  .panel {
+    width: 100%;
     height: auto;
   }
 
-  .logo-div {
+  .side-panel {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    padding-inline: 1rem;
+  }
+
+  .side-panel-button {
+    border-bottom: none;
+    border-right: 2px solid var(--pure-white);
+    padding: 15px 25px;
+    white-space: nowrap;
+  }
+
+  /* FORCE SINGLE-COLUMN LAYOUT */
+  .dashboard-content {
+    display: flex; 
+    flex-direction: column;
     width: 100%;
-    height: 40vh;
+    padding-inline: 5%;
   }
 
-  .input-div {
+  .card {
     width: 100%;
-    padding: 1.5rem;
+    max-width: 500px;
+    height: auto;
+    margin: 15px 0;
   }
 
-  .input-section {
-    padding: 30px 40px;
-  }
-
-  .title-text {
-    font-size: 2.5rem;
+  .scroll-view {
+    height: 200px;
   }
 }
 
-/* -------------------- LARGE PHONES (≤ 768px) -------------------- */
+
+/* -------------------- DASHBOARD — LARGE PHONES (≤ 768px) -------------------- */
 @media (max-width: 768px) {
-  .logo-div img {
-    width: 70%;
-    overflow-y: auto;      /* allow vertical scrolling */
-    height: auto;
+  .panel {
+    display: none;
   }
 
-  .input-section {
-    padding: 25px 30px;
+  .side-panel-button {
+    font-size: 1.2rem;
+    padding: 12px 20px;
   }
 
-  .btn {
-    font-size: 1.6rem;
-    padding: 10px 30px;
+  .dashboard-content {
+    padding-inline: 1rem;
+    flex-direction: column;
+    flex-wrap: wrap;
   }
 
-  .input-field {
+  .card {
     width: 100%;
-  }
-}
-
-/* -------------------- SMALL PHONES (≤ 480px) -------------------- */
-@media (max-width: 480px) {
-  .logo-div {
-    height: 30vh;
+    margin: 0;
   }
 
-  .title-text {
+  .scroll-view {
+    height: 180px;
+  }
+
+  .card-heading {
     font-size: 2rem;
   }
+}
 
-  .register, .login {
-     overflow-y: auto;      /* allow vertical scrolling */
+
+/* -------------------- DASHBOARD — SMALL PHONES (≤ 480px) -------------------- */
+@media (max-width: 480px) {
+
+  .side-panel-button {
+    font-size: 1rem;
+    padding: 10px 15px;
   }
 
-  .input-section {
-    padding: 10px 10px;
-    
+  .dashboard-content {
+    padding-inline: 0.5rem; /* stays single-column */
+    display: flex;
+    padding: 0;
+    margin: 0;
   }
 
-  .btn {
+
+  .card {
+    padding: 15px;
+    border-radius: 15px;
+  }
+
+  .card-heading {
+    font-size: 1.7rem;
+  }
+
+  .scroll-view {
+    height: 150px;
+  }
+
+  .progress-details p {
     font-size: 1.4rem;
-    padding: 8px 25px;
-  }
-
-  .bottom-register-text {
-    font-size: 0.9rem;
   }
 }
