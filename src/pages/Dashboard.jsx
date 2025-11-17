@@ -19,6 +19,7 @@ const Dashboard = () => {
                         <SidePanelBtn title="Profile"/>
                     </ul>
                 </aside>
+
                 <div className="dashboard-content">
                   <ProgressCard 
                         currentScore="2"

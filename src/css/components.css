@@ -152,7 +152,7 @@
   background-color: var(--bluish-color);
   color: var(--pure-white);
   height: 100vh;
-  width: 25vw;
+  width: 50%;
 }
 
 .side-panel-button:nth-child(0) {
@@ -183,7 +183,6 @@
 
 .dashboard {
   display: flex;
-  min-width: 100%;
   background-color: var(--pure-white);
 }
 
@@ -191,13 +190,13 @@
 .dashboard-content {
   display: flex;
   place-items: center; 
-  padding-inline: 5%;
+  padding-inline: 10px;
   flex-wrap: wrap;
 }
 
 
 .card {
-  width: 400px;
+  width: 450px;
   height: 250px;
   background-color: var(--shaded-white);
   margin: 20px;
@@ -346,46 +345,56 @@
 }
 
 
-/* -------------------- DASHBOARD — TABLETS (≤ 1024px) -------------------- */
+/* -------------------- TABLETS (≤1024px) -------------------- */
 @media (max-width: 1024px) {
+
+  /* Make dashboard vertical */
   .dashboard {
     flex-direction: column;
+    width: 100%;
     overflow-y: auto;
-    overflow-x: auto;
   }
 
+  /* Collapse left panel into a horizontal bar */
   .panel {
     width: 100%;
     height: auto;
   }
 
+  .title-wrapper{
+    display: none;
+  }
+
   .side-panel {
     display: flex;
     flex-direction: row;
-    overflow-x: auto;
-    padding-inline: 1rem;
+    justify-content: space-around;
+    padding: 1rem;
+    list-style: none;
   }
 
+
   .side-panel-button {
-    border-bottom: none;
-    border-right: 2px solid var(--pure-white);
-    padding: 15px 25px;
+    border: none;
+    padding: 15px 20px;
     white-space: nowrap;
   }
 
-  /* FORCE SINGLE-COLUMN LAYOUT */
+  /* CONTENT LAYOUT → STACK EVERYTHING */
   .dashboard-content {
-    display: flex; 
+    display: flex;
     flex-direction: column;
     width: 100%;
-    padding-inline: 5%;
+    padding: 1rem 2rem;
+    align-items: center;
   }
 
+  /* Fix card width on tablets */
   .card {
-    width: 100%;
+    width: 90%;
     max-width: 500px;
     height: auto;
-    margin: 15px 0;
+    margin: 20px 0;
   }
 
   .scroll-view {
@@ -394,56 +403,44 @@
 }
 
 
-/* -------------------- DASHBOARD — LARGE PHONES (≤ 768px) -------------------- */
+/* -------------------- LARGE PHONES (≤768px) -------------------- */
 @media (max-width: 768px) {
-  .panel {
-    display: none;
-  }
-
-  .side-panel-button {
-    font-size: 1.2rem;
-    padding: 12px 20px;
-  }
 
   .dashboard-content {
-    padding-inline: 1rem;
-    flex-direction: column;
-    flex-wrap: wrap;
+    padding: 1rem;
+    align-items: center;
   }
 
   .card {
     width: 100%;
-    margin: 0;
-  }
-
-  .scroll-view {
-    height: 180px;
+    margin: 15px 0;
   }
 
   .card-heading {
     font-size: 2rem;
   }
+
+  .scroll-view {
+    height: 170px;
+  }
 }
 
 
-/* -------------------- DASHBOARD — SMALL PHONES (≤ 480px) -------------------- */
+/* -------------------- SMALL PHONES (≤480px) -------------------- */
 @media (max-width: 480px) {
 
-  .side-panel-button {
-    font-size: 1rem;
-    padding: 10px 15px;
+  .panel {
+    display: none; /* completely hide side panel on small devices */
   }
 
   .dashboard-content {
-    padding-inline: 0.5rem; /* stays single-column */
-    display: flex;
-    padding: 0;
-    margin: 0;
+    padding: 0.5rem;
   }
 
-
   .card {
+    width: 100%;
     padding: 15px;
+    margin: 20px 0;
     border-radius: 15px;
   }
 
