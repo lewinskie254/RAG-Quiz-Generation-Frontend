@@ -1,6 +1,7 @@
 import SidePanelBtn from "../components/SidePanelBtn";
 import Title from "../components/Title";
 import '../css/components.css'; 
+import MultipleChoiceAnswer from "../components/MultipleChoiceAnswer";
 
 const Quizzes = () => {
     return (
@@ -32,11 +33,10 @@ const Quizzes = () => {
                         <div className="answer-card">
                             <h2 className="answer-title">Answers</h2>
                             <div className="multiple-choice-answers">
-                                <label class="check-container">
-                                    <input type="checkbox" />
-                                    <span class="checkmark"></span>
-                                    Accept terms
-                                </label>
+                                <MultipleChoiceAnswer answer="The first answer"/>
+                                <MultipleChoiceAnswer answer="The second answer"/>
+                                <MultipleChoiceAnswer answer="The third answer"/>
+                                <MultipleChoiceAnswer answer="The fourth answer"/>
                             </div>
                         </div>
                     </div>

@@ -405,6 +405,7 @@
   text-align: start;
   font-size: 1.5em;
   display: flex;
+  flex-direction: column;
 }
 
 .answer-check-box{
@@ -418,6 +419,7 @@
   cursor: pointer;
   gap: 10px;
   user-select: none;
+  margin-bottom: 10px;
 }
 
 /* Hide default checkbox */
