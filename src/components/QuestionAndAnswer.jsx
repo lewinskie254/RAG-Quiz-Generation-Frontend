@@ -7,7 +7,7 @@ import ImageBtn from "../components/ImageBtn";
 import EssayAnswer from "./EssayAnswer";
 
 
-const QuestionAndAnswer = (props) => {
+const QuestionAndAnswer = () => {
     return (
         <div className="question-and-answer">
             <Question question="This is the first question now and the provided timelines. "/> 
