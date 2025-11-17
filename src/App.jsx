@@ -1,12 +1,12 @@
 import './App.css'
-import Dashboard from './pages/Dashboard'
+import Quizzes from './pages/Quizzes'
 
 
 function App() {
 
   return (
     <>
-      <Dashboard/> 
+      <Quizzes/> 
     </>
   )
 }
