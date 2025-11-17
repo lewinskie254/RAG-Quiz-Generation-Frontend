@@ -258,7 +258,7 @@
 }
 
 .progress-fill {
-  background-color: var(--dark-green-color);
+  background-color: var(--bluish-color);
   height: 100%;
   border-radius: 10px 0 0 10px;
   position: relative;
@@ -280,6 +280,10 @@
   margin: 0;                 /* remove unwanted shift */
 }
 
+.image-btn {
+  text-decoration: none;
+  cursor: pointer;
+}
 
 .blue {
   color: var(--bluish-color);
@@ -380,10 +384,12 @@
   font-size: 2rem;
   font-family: var(--montserrat-font-family);
   font-weight: bold;
+  text-align: start;
 }
 
 .question-title{
   font-family: var(--bebas-font-family);
+  text-align: center;
 }
 
 
@@ -394,6 +400,7 @@
   margin: 1em;
   color: var(--bluish-color);
   padding: 20px;
+  box-shadow: 10px 10px 10px var(--box-shadow-color) inset;
 }
 
 .answer-title{
@@ -464,6 +471,18 @@
 
 .check-container input:checked ~ .checkmark::after {
   opacity: 1;
+}
+
+.quiz-progress{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quiz-progress img {
+  height: 70px;
+  width: 70px;
+  margin-inline: 10px;
 }
 
 

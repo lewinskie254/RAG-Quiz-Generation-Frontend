@@ -2,6 +2,12 @@ import SidePanelBtn from "../components/SidePanelBtn";
 import Title from "../components/Title";
 import '../css/components.css'; 
 import MultipleChoiceAnswer from "../components/MultipleChoiceAnswer";
+import Question from "../components/Question";
+import backUrl from "../assets/back.svg"; 
+import nextUrl from "../assets/next.svg"
+import ProgressBar from "../components/ProgressBar";
+import ImageBtn from "../components/ImageBtn";
+
 
 const Quizzes = () => {
     return (
@@ -25,11 +31,7 @@ const Quizzes = () => {
                 </aside>
                 <div className="quizzes-content">
                     <div className="question-and-answer">
-                        <div className="question-card">
-                            <h2 className="question-title">Question</h2>
-                            This is the sample of how the question will look like. 
-                            let's see how the question looks like when there isn an overflow of the content being asked. 
-                        </div>
+                        <Question question="This is the first question now"/> 
                         <div className="answer-card">
                             <h2 className="answer-title">Answers</h2>
                             <div className="multiple-choice-answers">
@@ -38,6 +40,11 @@ const Quizzes = () => {
                                 <MultipleChoiceAnswer answer="The third answer"/>
                                 <MultipleChoiceAnswer answer="The fourth answer"/>
                             </div>
+                        </div>
+                        <div className="quiz-progress">
+                            <ImageBtn imgUrl={backUrl}/> 
+                            <ProgressBar progressAmount = "50%" progressWidth="50%"/>
+                            <ImageBtn imgUrl={nextUrl}/> 
                         </div>
                     </div>
                 </div>
