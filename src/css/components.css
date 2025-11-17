@@ -8,6 +8,8 @@
   --box-shadow-color: #939393; 
   --dark-green-color: #148BA6; 
   --light-green-color: #A7F2EB; 
+  --bebas-font-family: "Bebas Neue", sans-serif; 
+  --montserrat-font-family: "Montserrat", sans-serif; 
 }
 
 
@@ -277,4 +279,68 @@
 
 .progress-details p {
   margin: 0;                 /* remove unwanted shift */
+}
+
+
+.blue {
+  color: var(--bluish-color);
+  font-family: var(--bebas-font-family);
+}
+
+.card-heading {
+  font-size: 2.5rem;
+}
+
+.card-scroll-view {
+  display: flex;
+}
+
+.scroll-view-list-tile {
+  height: 100px;
+  width: 100%;
+  background-color: var(--pure-white);
+  border-radius: 15px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding-right: 10px;
+}
+
+.list-tile-tile{
+  color: var(--bluish-color);
+  font-family: var(--montserrat-font-family); 
+  font-weight: bold;
+  padding-left: 15px;
+  padding-top: 10px;
+  font-size: 1em;
+}
+
+.list-tile-contents{
+  padding-left: 15px;
+  padding-top: 10px;
+  font-family: var(--montserrat-font-family);
+  color: var(--bluish-color);
+  font-size: 1.2em;
+  text-align: left;
+}
+
+.scroll-view{
+  height: 80%;
+  overflow: auto;
+}
+
+.scroll-view::-webkit-scrollbar {
+  width: 1em;
+  padding-left: 5px;
+}
+
+.scroll-view::-webkit-scrollbar-track {
+    background: var(--light-green-color);
+    border-radius: 10px;
+}
+
+.scroll-view::-webkit-scrollbar-thumb {
+    background: var(--dark-green-color);
+    border-radius: 10px;
 }
