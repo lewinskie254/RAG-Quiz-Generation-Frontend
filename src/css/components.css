@@ -366,17 +366,17 @@
   overflow: auto;
 }
 
-.scroll-view::-webkit-scrollbar {
+.scroll-view::-webkit-scrollbar, .admin-scroll-view::-webkit-scrollbar{
   width: 1em;
   padding-left: 5px;
 }
 
-.scroll-view::-webkit-scrollbar-track {
+.scroll-view::-webkit-scrollbar-track, .admin-scroll-view::-webkit-scrollbar-track {
     background: var(--light-green-color);
     border-radius: 10px;
 }
 
-.scroll-view::-webkit-scrollbar-thumb {
+.scroll-view::-webkit-scrollbar-thumb, .admin-scroll-view::-webkit-scrollbar-thumb {
     background: var(--dark-green-color);
     border-radius: 10px;
 }
@@ -510,6 +510,11 @@
   opacity: 1;
 }
 
+.admin-scroll-view{
+  overflow: auto;
+  height: 90%;
+}
+
 .quiz-progress{
   display: flex;
   justify-content: center;
@@ -542,6 +547,21 @@
     flex-direction: column;
     width: 100%;
     overflow-y: auto;
+  }
+
+  .admin-dashboard-content{
+    padding: 40px;
+    margin: 0;
+    flex: 1; 
+  }
+
+  .admin-dash-card {
+    width: 90%;
+    height: 70vh;
+  }
+
+  .admin-scroll-view{
+    height: 90%;
   }
 
   /* Collapse left panel into a horizontal bar */
@@ -596,7 +616,7 @@
   }
 
   /* CONTENT LAYOUT → STACK EVERYTHING */
-  .dashboard-content {
+  .dashboard-content, .admin-dashboard-content {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -621,7 +641,7 @@
 /* -------------------- LARGE PHONES (≤768px) -------------------- */
 @media (max-width: 768px) {
 
-  .dashboard-content {
+  .dashboard-content, .admin-dashboard-content {
     padding: 1rem;
     align-items: center;
   }
@@ -672,7 +692,7 @@
     min-height: 50%;
   }
 
-  .dashboard-content {
+  .dashboard-content, .admin-dashboard-content {
     padding: 0.5rem;
   }
 

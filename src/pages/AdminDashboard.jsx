@@ -22,20 +22,22 @@ const AdminDashboard = () => {
                 <div className="admin-dashboard-content">
                   <div className="admin-dash-card">
                     <h1 className='blue card-heading'>My Quizzes</h1>
-                    <div className="scroll-view">
+                    <div className="admin-scroll-view">
                         <AdminDashListView title="Quiz 5" unitName="Vendor Coordination and Contracts" />
                         <AdminDashListView title="Quiz 6" unitName="Event Design and Theming" />
                         <AdminDashListView title="Quiz 7" unitName="Risk Management and Compliance" />
                         <AdminDashListView title="Quiz 8" unitName="Event Execution and Evaluation" />
+                        <AdminDashListView title="Quiz 8" unitName="Event Execution and Evaluation" />
+                        <AdminDashListView title="Quiz 8" unitName="Event Execution and Evaluation" />
                     </div>
                   </div>
                    <div className="admin-dash-card">
-                    <h1 className='blue card-heading'>Quizzes Completed</h1>
-                    <div className="scroll-view">
-                        <AdminDashListView title="Unit 1" unitName="Introduction to Event Management" />
-                        <AdminDashListView title="Unit 2" unitName="Client Needs Assessment" />
-                        <AdminDashListView title="Unit 3" unitName="Budgeting and Cost Control" />
-                        <AdminDashListView title="Unit 4" unitName="Venue Selection and Logistics" />
+                    <h1 className='blue card-heading'>My Students</h1>
+                    <div className="admin-scroll-view">
+                        <AdminDashListView title="Grade : 20" unitName="James Kamau" />
+                        <AdminDashListView title="Grade : 25" unitName="Nancy Njoroge" />
+                        <AdminDashListView title="Grade : 45" unitName="Everylene Kamau" />
+                        <AdminDashListView title="Grade : 65" unitName="Justice Oliech" />
                     </div>
                   </div>
                 </div>
