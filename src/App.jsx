@@ -1,12 +1,12 @@
 import './App.css'
-import Quizzes from './pages/Quizzes'
+import Register from './pages/Register.jsx'
 
 
 function App() {
 
   return (
     <>
-      <Quizzes/> 
+      <Register/> 
     </>
   )
 }

@@ -3,7 +3,7 @@
 const Button = (props) => {
     return (
         <div className="btn-wrapper">
-            <a href={props.href} className="btn">{props.name}</a>
+            <Button className="btn" onClick ={props.onClick}>{props.name}</Button>
         </div>
     )
 }

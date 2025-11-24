@@ -1,12 +1,18 @@
 
 
-const InputField = (props) => {
+const InputField = ({ label, type="text", placeholder, value, onChange }) => {
     return (
         <div>
-            <label className="input-field-label">{props.label}</label>
-            <input type={props.type ? props.type : "text"} className="input-field" placeholder={props.placeholder}/>
+            <label className="input-field-label">{label}</label>
+            <input
+                type={type}
+                className="input-field"
+                placeholder={placeholder}
+                value={value}
+                onChange={(e) => onChange(e.target.value)}
+            />
         </div>
-    )
-}
+    );
+};
 
-export default InputField; 
+export default InputField;
