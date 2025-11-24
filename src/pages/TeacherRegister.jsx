@@ -6,19 +6,17 @@ import LoginOrRegister from "../components/LoginOrRegister";
 import { useState, useEffect, use } from "react";
 import axios from "axios";
 
-const Register = () => {
+const TeacherRegister = () => {
     const [name, setName] = useState("")
     const [username, setUsername] = useState("") 
     const [password, setPassword] = useState("")
+    const [confirmPassword, setConfirmPassword] = useState("")
     const [school, setSchool] = useState("")
-    const [course, setCourse] = useState("")
     const [phoneNumber, setPhoneNumber] = useState("")
     const [schools, setSchools] = useState([])
-    const [courses, setCourses] = useState([])
     useEffect(() => {
       const fetchData = async () => {
         await fetchSchools();   // wait for schools
-        await fetchCourses();   // then wait for courses
       };
       fetchData();
     }, []); 
@@ -33,32 +31,26 @@ const Register = () => {
         }
     }
 
-    const fetchCourses = async () => {
-      try {
-            const response = await axios.get('http://127.0.0.1:8000/api/course/show-all-courses/');
-            console.log(response.data); 
-            setCourses(response.data.courses); 
-        } catch (error) {
-            console.error("Error:", error.response?.data || error.message);
-        }
-    }
-
 
     const handleRegister = async () => {
-        const user = {
-            name,
-            username, 
-            phoneNumber, 
-            password,
-            course, 
-            school
-        };
-        console.log(`Name: ${user.name} Course: ${user.course},  School: ${user.school}`)
-        try {
-            const response = await axios.post('http://127.0.0.1:8000/api/student/add-student/', user, { headers: { "Content-Type": "application/json" } });
-            console.log("Success:", response.data);
-        } catch (error) {
-            console.error("Error:", error.response?.data || error.message);
+
+        if (password === confirmPassword) {
+            const user = {
+                name,
+                username, 
+                phoneNumber, 
+                password,
+                school
+            };
+            console.log(`Name: ${user.name} School: ${user.school}`)
+            try {
+                const response = await axios.post('http://127.0.0.1:8000/api/teacher/add-teacher/', user, { headers: { "Content-Type": "application/json" } });
+                console.log("Success:", response.data);
+            } catch (error) {
+                console.error("Error:", error.response?.data || error.message);
+            }
+        } else {
+            console.log("Password and Confirm Password have to be the same")
         }
     };
 
@@ -76,6 +68,11 @@ const Register = () => {
                 />
 
                 <InputField
+                    placeholder="Username"
+                    value={username}
+                    onChange={setUsername}
+                />
+                 <InputField
                     placeholder="Phone Number"
                     type="text"
                     value={phoneNumber}
@@ -83,17 +80,19 @@ const Register = () => {
                 />
 
                 <InputField
-                    placeholder="Username"
-                    value={username}
-                    onChange={setUsername}
-                />
-
-                <InputField
                     placeholder="Password"
                     type="password"
                     value={password}
                     onChange={setPassword}
-                />
+                /> 
+
+                <InputField
+                    placeholder="Password"
+                    type="password"
+                    value={confirmPassword}
+                    onChange={setConfirmPassword}
+                /> 
+               
 
                 <select
                     className="select-class"
@@ -110,23 +109,6 @@ const Register = () => {
                   ))}
                 </select>
 
-                <select
-                    className="select-class"
-                    name="course"
-                    id="course"
-                    value={course}
-                    onChange={(e) => {
-                      console.log("Selected course:", e.target.value);
-                      setCourse(e.target.value);
-                    }}
-                >
-                  <option value="">Select Course</option>
-                  {courses.map((c) => (
-                      <option key={c.id} value={c.id}>
-                          {c.name}
-                      </option>
-                  ))}
-                </select>
                 <Button name="Register" onClick={handleRegister} /> 
                 <LoginOrRegister mainText= "Already a Member? " anchorText="Login Here" href="https://www.google.com" />
             </div>
@@ -139,4 +121,4 @@ const Register = () => {
     ); 
 }; 
 
-export default Register; 
+export default TeacherRegister; 

@@ -1,12 +1,12 @@
 import './App.css'
-import Register from './pages/Register.jsx'
+import TeacherRegister from './pages/TeacherRegister'
 
 
 function App() {
 
   return (
     <>
-      <Register/> 
+      <TeacherRegister/>   
     </>
   )
 }
