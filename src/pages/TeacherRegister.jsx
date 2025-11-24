@@ -46,6 +46,12 @@ const TeacherRegister = () => {
             try {
                 const response = await axios.post('http://127.0.0.1:8000/api/teacher/add-teacher/', user, { headers: { "Content-Type": "application/json" } });
                 console.log("Success:", response.data);
+                setName(""); 
+                setPassword(""); 
+                setSchool("")
+                setPhoneNumber(""); 
+                setUsername(""); 
+                setConfirmPassword(""); 
             } catch (error) {
                 console.error("Error:", error.response?.data || error.message);
             }
@@ -59,7 +65,7 @@ const TeacherRegister = () => {
     <div className="container">
       <div className="register">
         <div className="input-div">
-            <Title title="Registration Page" />
+            <Title title="Admin Registration Page" />
             <div className="input-section">
                 <InputField
                     placeholder="Full Names"
@@ -87,7 +93,7 @@ const TeacherRegister = () => {
                 /> 
 
                 <InputField
-                    placeholder="Password"
+                    placeholder="Confirm Password"
                     type="password"
                     value={confirmPassword}
                     onChange={setConfirmPassword}

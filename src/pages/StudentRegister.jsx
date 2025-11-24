@@ -10,6 +10,7 @@ const StudentRegister = () => {
     const [name, setName] = useState("")
     const [username, setUsername] = useState("") 
     const [password, setPassword] = useState("")
+    [confirmPassword, setConfirmPassword] = useState("")
     const [school, setSchool] = useState("")
     const [course, setCourse] = useState("")
     const [phoneNumber, setPhoneNumber] = useState("")
@@ -38,7 +39,13 @@ const StudentRegister = () => {
             const response = await axios.get('http://127.0.0.1:8000/api/course/show-all-courses/');
             console.log(response.data); 
             setCourses(response.data.courses); 
-        } catch (error) {
+            setName(""); 
+            setPassword(""); 
+            setSchool("")
+            setPhoneNumber(""); 
+            setUsername(""); 
+            setConfirmPassword(""); 
+    } catch (error) {
             console.error("Error:", error.response?.data || error.message);
         }
     }
@@ -67,7 +74,7 @@ const StudentRegister = () => {
     <div className="container">
       <div className="register">
         <div className="input-div">
-            <Title title="Registration Page" />
+            <Title title="Student Registration Page" />
             <div className="input-section">
                 <InputField
                     placeholder="Full Names"
@@ -94,6 +101,13 @@ const StudentRegister = () => {
                     value={password}
                     onChange={setPassword}
                 />
+
+                <InputField
+                    placeholder="Confirm Password"
+                    type="password"
+                    value={confirmPassword}
+                    onChange={setConfirmPassword}
+                /> 
 
                 <select
                     className="select-class"
