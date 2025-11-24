@@ -5,7 +5,7 @@ import Title from "../components/Title";
 import LoginOrRegister from "../components/LoginOrRegister";
 
 
-const Login = () => {
+const AdminLogin = () => {
   return (
     <div className="container">
       <div className="login">
@@ -26,4 +26,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default AdminLogin;

@@ -6,7 +6,7 @@ import LoginOrRegister from "../components/LoginOrRegister";
 import { useState, useEffect, use } from "react";
 import axios from "axios";
 
-const TeacherRegister = () => {
+const AdminRegister = () => {
     const [name, setName] = useState("")
     const [username, setUsername] = useState("") 
     const [password, setPassword] = useState("")
@@ -127,4 +127,4 @@ const TeacherRegister = () => {
     ); 
 }; 
 
-export default TeacherRegister; 
+export default AdminRegister; 

@@ -51,7 +51,7 @@ const StudentRegister = () => {
     }
 
 
-    const handleRegister = async () => {
+    const handleRegister = async () => {    
         const user = {
             name,
             username, 
