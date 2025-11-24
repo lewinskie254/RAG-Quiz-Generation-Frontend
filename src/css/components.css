@@ -194,6 +194,39 @@
   flex-wrap: wrap;
 }
 
+.admin-dashboard-content{
+  padding-block: 50px;
+  padding-inline: 50px; 
+  display: flex;
+  flex-direction: row;
+  gap: 40px
+
+}
+
+.dash-list-view, .card-scroll-view {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+.a-tag {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.dash-list-view p {
+  margin: 0;
+}
+
+.admin-dash-card{
+  width: 30vw;
+  background-color: var(--shaded-white);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 10px 5px 5px 10px var(--box-shadow-color) inset;
+}
+
 
 .card {
   width: 450px;

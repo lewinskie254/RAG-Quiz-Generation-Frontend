@@ -5,7 +5,7 @@ import ProgressCard from '../components/ProgressCard';
 import UnitsCard from '../components/UnitsCard';
 
 
-const Dashboard = () => {
+const StudentDashboard = () => {
     return (
         <div className="container">
             <div className="dashboard">
@@ -57,4 +57,4 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard; 
+export default StudentDashboard; 
