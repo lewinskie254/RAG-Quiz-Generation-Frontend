@@ -1,12 +1,20 @@
 import Question from "./Question";
 import AdminMultipleChoiceAnswer from "./AdminMultipleChoiceAnswer";
+import React, { useEffect } from "react";
 
-const AdminQuestionAndAnswer = (props) => {
-    const questionId= props.questionId; 
 
-    return(
+const AdminQuestionAndAnswer = ({ question }) => {
+    const { id, question: qText, answer, quiz } = question;
+
+    useEffect(() => { 
+        if (question) {
+            console.log(question); 
+        }
+    }, [question]); // <-- dependency array includes question
+
+    return (
         <div className="admin-question-and-answer">
-            <Question question="This is the first question now and the provided timelines. "/> 
+            <Question question={qText}/> 
             <div className="answer-card">
                 <h2 className="answer-title">Answers</h2>
                 <div className="multiple-choice-answers">
@@ -17,8 +25,7 @@ const AdminQuestionAndAnswer = (props) => {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-
-export default AdminQuestionAndAnswer; 
+export default AdminQuestionAndAnswer;
