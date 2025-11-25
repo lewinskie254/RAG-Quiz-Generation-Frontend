@@ -1,12 +1,13 @@
-const SidePanelBtn = (props) => {
+import { Link } from "react-router-dom";
+
+const SidePanelBtn = ({ title, to }) => {
     return (
-        <div>
-            <li className="side-panel-button">
-                <a href={props.href} className="side-panel-a-btn">{props.title}</a>
-            </li>
-        </div>
-    )
-}
+        <li className="side-panel-button">
+            <Link to={to} className="side-panel-a-btn">
+                {title}
+            </Link>
+        </li>
+    );
+};
 
-export default SidePanelBtn; 
-
+export default SidePanelBtn;

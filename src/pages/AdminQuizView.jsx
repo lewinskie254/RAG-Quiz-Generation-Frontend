@@ -10,10 +10,12 @@ import { useParams } from "react-router";
 const AdminQuizView = (props) => {
     const {quizId} = useParams()
     const [questions, setQuestions] = useState([]); 
+    const [units, setUnits] = useState([]);
 
     useEffect(() => { 
         const fetchData = async () => {
             await fetchQuiz(); 
+            await fetchAllUnits();
             console.log("Fetching data complete."); 
         }
         fetchData(); 
@@ -21,11 +23,22 @@ const AdminQuizView = (props) => {
 
     const fetchQuiz = async () => {
         try{
-           const response = await axios.get(`http://127.0.0.1:8000/api/quiz/show-all-questions-per-quiz/${quizId}`);
+           const response = await axios.get(`http://127.0.0.1:8000/api/quiz/show-all-questions-per-quiz/${quizId}/`);
            const questions = response.data.questions; 
             setQuestions(questions); 
         } catch (e) {
             console.log(e)
+        }
+    }
+
+    const fetchAllUnits = async() => {
+        try {
+            const response = await axios.get(`http://127.0.0.1:8000/api/unit/show-all-units`)
+            const units = response.data; 
+            setUnits(response.data.units); 
+            console.log(response.data); 
+        }catch (e) {
+            console.log(`error fetching units ${e}`)
         }
     }
 
@@ -36,16 +49,18 @@ const AdminQuizView = (props) => {
                     <ul className="quiz-side-panel">
                         <Title title="Quizzes"/>
                         <hr className='quiz-side-panel-underline'/>
-                        <SidePanelBtn title="Unit 1"/>
-                        <SidePanelBtn title="Unit 2"/>
-                        <SidePanelBtn title="Unit 3"/>
-                        <SidePanelBtn title="Unit 4"/>
-                        <SidePanelBtn title="Unit 5"/>
-                        <SidePanelBtn title="Unit 6"/>
-                        <SidePanelBtn title="Unit 7"/>
-                        <SidePanelBtn title="Unit 8"/>
-                        <SidePanelBtn title="Unit 9"/>
-                        <SidePanelBtn title="Unit 10"/>
+                        {
+                            units.map((unit, index) => {
+                                console.log(unit);
+                                return (
+                                    <SidePanelBtn 
+                                        key={index} 
+                                        title={unit.name} 
+                                        to={`/admin-quiz-management/${unit.id}/`} 
+                                    />
+                                );
+                            })
+                        }
                     </ul>
                 </aside>
                 <div className="admin-quiz-view">
