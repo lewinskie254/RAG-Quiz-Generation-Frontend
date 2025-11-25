@@ -1,10 +1,10 @@
 import SidePanelBtn from "../components/SidePanelBtn";
 import Title from "../components/Title";
 import '../css/components.css'; 
-import QuestionAndAnswer from "../components/QuestionAndAnswer";
+import AdminQuestionAndAnswer from "../components/AdminQuestionAndAnswer.Jsx";
 
 
-const Quizzes = () => {
+const AdminQuizView = () => {
     return (
         <div className="container">
             <div className="quiz">
@@ -24,8 +24,11 @@ const Quizzes = () => {
                         <SidePanelBtn title="Unit 10"/>
                     </ul>
                 </aside>
-                <div className="quizzes-content">
-                    <QuestionAndAnswer/>
+                <div className="admin-quiz-view">
+                    <AdminQuestionAndAnswer/>
+                    <AdminQuestionAndAnswer/>
+                    <AdminQuestionAndAnswer/>
+                    <AdminQuestionAndAnswer/>
                 </div>
             </div>
         </div>
@@ -33,4 +36,4 @@ const Quizzes = () => {
 }
 
 
-export default Quizzes; 
+export default AdminQuizView; 

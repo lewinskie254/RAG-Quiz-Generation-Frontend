@@ -19,9 +19,9 @@
 .container {
   width: 100vw;
   height: 100vh;
-  display: flex;
   overflow: hidden;
 }
+
 
 /* Login wrapper */
 .login, .register {
@@ -53,6 +53,13 @@
   width: 60%;
   height: 60%;
   object-fit: cover; /* cover entire div */
+}
+
+.admin-quiz-view {
+  flex: 1;
+  height: 100vh;        /* <– Match viewport height */
+  overflow-y: auto;     /* <– ONLY this scrolls */
+  padding: 20px;
 }
 
 /* Right side: input form */
@@ -381,8 +388,10 @@
     border-radius: 10px;
 }
 
-.quiz{
+.quiz {
   display: flex;
+  height: 100vh;        /* <– Make quiz fill screen */
+  overflow: hidden;
 }
 
 .quiz-panel {

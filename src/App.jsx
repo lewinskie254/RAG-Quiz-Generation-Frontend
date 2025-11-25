@@ -1,12 +1,12 @@
 import './App.css'
-import AdminDashboard from './pages/AdminDashboard'
+import AdminQuizView from './pages/AdminQuizView'
 
 
 function App() {
 
   return (
     <>
-      <AdminDashboard/>   
+      <AdminQuizView/>   
     </>
   )
 }
