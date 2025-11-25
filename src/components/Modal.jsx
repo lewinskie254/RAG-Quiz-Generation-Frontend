@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import Button from '../components/button';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
 import axios from 'axios';
 import AdminQuizView from '../pages/AdminQuizView';
 
@@ -20,6 +21,9 @@ export default function Modal(props) {
     const [loading, setLoading] = useState(false);
     const [selectedUnit, setSelectedUnit] = useState("")
     const [generatedQuizId, setGeneratedQuizId] = useState(""); 
+
+
+    const navigate = useNavigate()
     
     useEffect(() => {
         const fetchData =async()=> {
@@ -80,9 +84,7 @@ export default function Modal(props) {
 
 
     const viewQuiz = () => {
-        return (
-           <AdminQuizView quizId={generatedQuizId} /> 
-        )
+        navigate(`/admin-quiz/${generatedQuizId}`)
     }
 
     const tryAgain = () => {

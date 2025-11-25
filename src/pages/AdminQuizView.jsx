@@ -4,10 +4,11 @@ import '../css/components.css';
 import AdminQuestionAndAnswer from "../components/AdminQuestionAndAnswer.Jsx";
 import axios from "axios";
 import { useEffect, useState} from "react";
+import { useParams } from "react-router";
 
 
 const AdminQuizView = (props) => {
-
+    const {quizId} = useParams()
     const [questions, setQuestions] = useState([]); 
 
     useEffect(() => { 
@@ -20,7 +21,7 @@ const AdminQuizView = (props) => {
 
     const fetchQuiz = async () => {
         try{
-           const response = await axios.get(`http://127.0.0.1:8000/api/quiz/${props.quizId}`);
+           const response = await axios.get(`http://127.0.0.1:8000/api/quiz/show-all-questions-per-quiz/${quizId}`);
            const questions = response.data.questions; 
             setQuestions(questions); 
         } catch (e) {
