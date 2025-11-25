@@ -1,0 +1,133 @@
+import React from 'react'
+import ReactDom from 'react-dom'
+import Button from '../components/button';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import AdminQuizView from '../pages/AdminQuizView';
+
+export default function Modal(props) {
+    var visible = props.visible; 
+
+    if (!visible) return null; 
+
+
+    const [courses, setCourses] = useState([]); 
+    const [myUnits, setMyUnits] =useState([]); 
+    const [loadedUnits, setLoadedUnits] = useState(false);
+    const [quizGenerated, setGeneratedQuiz] = useState(false); 
+    const [selectedCourse, setSelectedCourse] = useState("")
+    const [loading, setLoading] = useState(false);
+    const [selectedUnit, setSelectedUnit] = useState("")
+    const [generatedQuizId, setGeneratedQuizId] = useState(""); 
+    
+    useEffect(() => {
+        const fetchData =async()=> {
+            await fetchCourses(); 
+        }
+        fetchData()
+        }, []
+    )
+
+    const fetchCourses = async () => {
+        try{
+            const response = await axios.get('http://127.0.0.1:8000/api/course/show-all-courses/')
+            setCourses(response.data.courses)
+        }catch (e) {
+            console.log(`Error: ${e}`)
+        }
+    }
+
+    const handleUnitFetch = async (e) => {
+        const courseId = e.target.value;
+        setSelectedCourse(courseId);
+        await fetchUnits(courseId);
+    };
+
+
+    const fetchUnits = async (courseId) => {
+        try {
+            const response = await axios.get(
+                `http://127.0.0.1:8000/api/unit/show-units-by-course/${courseId}`
+            );
+            console.log(response.data); 
+            setMyUnits(response.data.units);
+            setLoadedUnits(true);
+        } catch (err) {
+            console.log(`error: ${err}`);
+        }
+    };
+
+
+    const generateQuiz = async () => {
+        setLoading(true); 
+        try {
+            console.log(`selected unit: ${selectedUnit}`)
+            const response = await axios.get(
+                `http://127.0.0.1:8000/api/quiz/generate-quiz/e1495fc3-f74d-4e29-8cef-f1a241683857/${selectedUnit}`
+            );
+            setGeneratedQuiz(true); 
+            setGeneratedQuizId(response.data.quiz); 
+            setSelectedCourse("")
+            setSelectedUnit("")
+            console.log(response.data); 
+        } catch (e) {
+            console.log(`error ${e}`); 
+        } finally {
+            setLoading(false); // hide loading
+        }
+    }
+
+
+    const viewQuiz = () => {
+        return (
+           <AdminQuizView quizId={generatedQuizId} /> 
+        )
+    }
+
+
+  return ReactDom.createPortal(
+    <div>
+        <div className="overlay">
+
+        </div>
+        
+        <div className="modal">
+            <Button name="Close" onClick={props.onClose} />
+            {loading && (
+                    <div className="loading-overlay">
+                        <div className="spinner"></div>
+                    </div>
+            )}
+            
+            <form onSubmit={(e) => e.preventDefault()}>
+                {/* add courses  */}
+                <select id="modal-form-course" onChange={handleUnitFetch}>
+                    <option value="">Select Course</option>
+                    {courses.map((course) => (
+                        <option key={course.id} value={course.id}>
+                            {course.name}
+                        </option>
+                    ))}
+                </select>
+
+                {/* add units */}
+                {loadedUnits && (
+                    <select id="modal-form-unit" onChange={(e) => setSelectedUnit(e.target.value)}>
+                        <option value="">Select Unit</option>
+                        {myUnits.map((unit) => (
+                            <option value={unit.id} key={unit.id}>
+                                {unit.name}
+                            </option>
+                        ))}
+                    </select>
+                )}
+                {
+                    quizGenerated ? <Button name="View Quiz" onClick={viewQuiz}/> : <Button name="Generate Quiz" onClick={generateQuiz}/>
+                }
+
+            </form>
+        </div>
+    </div>, 
+    document.getElementById('portal')
+  )
+}

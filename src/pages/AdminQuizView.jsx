@@ -6,7 +6,7 @@ import axios from "axios";
 import { useEffect, useState} from "react";
 
 
-const AdminQuizView = () => {
+const AdminQuizView = (props) => {
 
     const [questions, setQuestions] = useState([]); 
 
@@ -20,7 +20,7 @@ const AdminQuizView = () => {
 
     const fetchQuiz = async () => {
         try{
-           const response = await axios.get('http://127.0.0.1:8000/api/quiz/show-all-questions-per-quiz/462f7ad9-5165-4b29-bfd4-6f375a22001c/');
+           const response = await axios.get(`http://127.0.0.1:8000/api/quiz/${props.quizId}`);
            const questions = response.data.questions; 
             setQuestions(questions); 
         } catch (e) {

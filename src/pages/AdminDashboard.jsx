@@ -2,9 +2,14 @@ import '../css/components.css'
 import SidePanelBtn from '../components/SidePanelBtn';
 import Title from '../components/Title';
 import AdminDashListView from '../components/AdminDashListView';
+import Button from '../components/button';
+import Modal from '../components/Modal';
+import { useState } from 'react';
 
 
 const AdminDashboard = () => {
+    const [modalVisible, setModalVisible] = useState(false); 
+    const showModal = () => setModalVisible(true);
     return (
         <div className="container">
             <div className="dashboard">
@@ -20,7 +25,14 @@ const AdminDashboard = () => {
                 </aside>
 
                 <div className="admin-dashboard-content">
-                  <div className="admin-dash-card">
+                    <div className="quiz-generator">
+                        <Button name="Generate Quiz" onClick={showModal} />
+                    </div>
+                    {modalVisible && (
+                        <Modal visible={modalVisible} onClose={() => setModalVisible(false)} />
+                    )}
+                <div className="admin-cards">
+                         <div className="admin-dash-card">
                     <h1 className='blue card-heading'>My Quizzes</h1>
                     <div className="admin-scroll-view">
                         <AdminDashListView title="Quiz 5" unitName="Vendor Coordination and Contracts" />
@@ -40,6 +52,7 @@ const AdminDashboard = () => {
                         <AdminDashListView title="Grade : 65" unitName="Justice Oliech" />
                     </div>
                   </div>
+                </div>
                 </div>
             </div>
         </div>
