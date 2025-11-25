@@ -547,6 +547,11 @@
   border-radius: 10px;
 }
 
+.correct{
+  background-color: var(--bluish-color);
+  color: var(--pure-white);
+}
+
 
 /* -------------------- TABLETS (≤1024px) -------------------- */
 @media (max-width: 1024px) {

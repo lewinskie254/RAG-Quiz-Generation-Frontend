@@ -1,16 +1,46 @@
 import Question from "./Question";
 import AdminMultipleChoiceAnswer from "./AdminMultipleChoiceAnswer";
-import React, { useEffect } from "react";
+import React, { useEffect, useState} from "react";
+import axios from "axios";
 
 
 const AdminQuestionAndAnswer = ({ question }) => {
     const { id, question: qText, answer, quiz } = question;
+    const [choices, setChoices] = useState([]); 
+    const [correctIndex, setCorrectIndex] = useState(0); 
 
+    const evaluateCorrectChoice = () => {
+        for (let i = 0; i < choices.length; i++) {
+            if (choices[i].content == answer) {
+                setCorrectIndex(i);
+                break;
+            }
+        }
+    };
+  
     useEffect(() => { 
         if (question) {
-            console.log(question); 
+            const fetchQuestion = async() => {
+                await fetchMultipleChoices(id); 
+            }
+            fetchQuestion(); 
         }
-    }, [question]); // <-- dependency array includes question
+    }, [question]);
+
+    useEffect(() => {
+        if (choices.length > 0) {
+            evaluateCorrectChoice();
+        }
+    }, [choices]);
+
+    const fetchMultipleChoices = async(id) => {
+        try {
+            const response = await axios.get(`http://127.0.0.1:8000/api/quiz/show-multiple-choices-for-question/${id}`); 
+            setChoices(response.data.choices)
+        }catch (e) {
+            console.log(`error: ${e}`); 
+        }
+    }
 
     return (
         <div className="admin-question-and-answer">
@@ -18,10 +48,17 @@ const AdminQuestionAndAnswer = ({ question }) => {
             <div className="answer-card">
                 <h2 className="answer-title">Answers</h2>
                 <div className="multiple-choice-answers">
-                    <AdminMultipleChoiceAnswer correct="correct" answer="Answer to the first" />
-                    <AdminMultipleChoiceAnswer answer="Answer to the second" />
-                    <AdminMultipleChoiceAnswer answer="Answer to the third" />
-                    <AdminMultipleChoiceAnswer answer="Answer to the fourth" />
+                    {
+                        choices.map((choice, index) => (
+                            <AdminMultipleChoiceAnswer 
+                                key={choice.id}
+                                id={choice.id}
+                                correct={index === correctIndex}
+                                answer={choice.content}
+                            />
+                        ))
+                    }
+
                 </div>
             </div>
         </div>
