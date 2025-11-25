@@ -10,6 +10,8 @@
   --light-green-color: #A7F2EB; 
   --bebas-font-family: "Bebas Neue", sans-serif; 
   --montserrat-font-family: "Montserrat", sans-serif; 
+  --error-message-red: rgb(231, 49, 49); 
+  --error-message-background: rgb(240, 203, 203); 
 }
 
 
@@ -423,6 +425,7 @@
   z-index: 1000;
   align-items: center;
   justify-content: center;
+  width: 50vw;
 }
 
 .modal form {
@@ -432,6 +435,38 @@
 .modal form select {
   padding: 20px;
   font-size: 1.2em;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.error-message-box{
+  background-color: var(--error-message-background);
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px var(--box-shadow-color) inset;
+}
+
+.error-message-box h2 {
+  color: var(--error-message-red);
+  font-family: var(--montserrat-font-family);
+  font-size: 1.5rem;
+  padding: 10px;
+}
+
+.success-message-box{
+  background-color: var(--light-green-color);
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px var(--box-shadow-color) inset;
+}
+
+.success-message-box h2 {
+  color: var(--dark-green-color);
+  font-family: var(--montserrat-font-family);
+  font-size: 1.5rem;
+  padding: 10px;
 }
 
 .modal form select option {

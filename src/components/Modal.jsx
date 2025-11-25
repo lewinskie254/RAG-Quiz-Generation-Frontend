@@ -16,6 +16,7 @@ export default function Modal(props) {
     const [loadedUnits, setLoadedUnits] = useState(false);
     const [quizGenerated, setGeneratedQuiz] = useState(false); 
     const [selectedCourse, setSelectedCourse] = useState("")
+    const [success, setSuccess] = useState(""); 
     const [loading, setLoading] = useState(false);
     const [selectedUnit, setSelectedUnit] = useState("")
     const [generatedQuizId, setGeneratedQuizId] = useState(""); 
@@ -69,9 +70,9 @@ export default function Modal(props) {
             setGeneratedQuizId(response.data.quiz); 
             setSelectedCourse("")
             setSelectedUnit("")
-            console.log(response.data); 
+            setSuccess(response.data.message)
         } catch (e) {
-            console.log(`error ${e}`); 
+            setSuccess(e)
         } finally {
             setLoading(false); // hide loading
         }
@@ -82,6 +83,16 @@ export default function Modal(props) {
         return (
            <AdminQuizView quizId={generatedQuizId} /> 
         )
+    }
+
+    const tryAgain = () => {
+        loadedUnits = false; 
+        quizGenerated = false; 
+        selectedCourse = ""; 
+        success = ""; 
+        loading = false; 
+        selectedUnit = ""; 
+        generatedQuizId = "";  
     }
 
 
@@ -98,34 +109,54 @@ export default function Modal(props) {
                         <div className="spinner"></div>
                     </div>
             )}
-            
-            <form onSubmit={(e) => e.preventDefault()}>
-                {/* add courses  */}
-                <select id="modal-form-course" onChange={handleUnitFetch}>
-                    <option value="">Select Course</option>
-                    {courses.map((course) => (
-                        <option key={course.id} value={course.id}>
-                            {course.name}
-                        </option>
-                    ))}
-                </select>
 
-                {/* add units */}
-                {loadedUnits && (
-                    <select id="modal-form-unit" onChange={(e) => setSelectedUnit(e.target.value)}>
-                        <option value="">Select Unit</option>
-                        {myUnits.map((unit) => (
-                            <option value={unit.id} key={unit.id}>
-                                {unit.name}
+            {
+                quizGenerated ? (
+                    <div className="go-to-quiz">
+                        
+                            {
+                                success === 'Created Successfully' ? 
+                                <div className="success-message-box">
+                                    <h2>Quiz Generated Successfully </h2> 
+                                    <Button name="View Quiz" onClick={viewQuiz}/>
+                                </div>
+                            : <div className="error-message-box">
+                                <h2>Error Generating Your Quiz </h2> 
+                                    <Button name="Try Again" onClick={tryAgain}/>
+                                </div>
+                            }
+                             
+                        
+                    </div>
+                ) : (
+                    <form onSubmit={(e) => e.preventDefault()}>
+                    {/* add courses  */}
+                    <select id="modal-form-course" onChange={handleUnitFetch}>
+                        <option value="">Select Course</option>
+                        {courses.map((course) => (
+                            <option key={course.id} value={course.id}>
+                                {course.name}
                             </option>
                         ))}
                     </select>
-                )}
-                {
-                    quizGenerated ? <Button name="View Quiz" onClick={viewQuiz}/> : <Button name="Generate Quiz" onClick={generateQuiz}/>
-                }
 
-            </form>
+                    {/* add units */}
+                    {loadedUnits && (
+                        <select id="modal-form-unit" onChange={(e) => setSelectedUnit(e.target.value)}>
+                            <option value="">Select Unit</option>
+                            {myUnits.map((unit) => (
+                                <option value={unit.id} key={unit.id}>
+                                    {unit.name}
+                                </option>
+                            ))}
+                        </select>
+                    )}
+                
+                    <Button name="Generate Quiz" onClick={generateQuiz}/>
+
+                </form>
+                )
+            }
         </div>
     </div>, 
     document.getElementById('portal')
