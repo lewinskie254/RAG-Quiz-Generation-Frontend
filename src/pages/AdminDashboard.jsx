@@ -17,8 +17,6 @@ const AdminDashboard = () => {
                     <ul className="side-panel">
                         <Title title="Event Planners Alliance"/>
                         <hr className='side-panel-underline'/>
-                        <SidePanelBtn title="Dashboard"/>
-                        <SidePanelBtn title="Quizzes"/>
                         <SidePanelBtn title="My Students"/>
                         <SidePanelBtn title="Profile"/>
                     </ul>

@@ -88,13 +88,13 @@ export default function Modal(props) {
     }
 
     const tryAgain = () => {
-        loadedUnits = false; 
-        quizGenerated = false; 
-        selectedCourse = ""; 
-        success = ""; 
-        loading = false; 
-        selectedUnit = ""; 
-        generatedQuizId = "";  
+        setLoadedUnits(false);
+        setGeneratedQuiz(false);
+        setSelectedCourse("");
+        setSuccess("");
+        setLoading(false);
+        setSelectedUnit("");
+        setGeneratedQuizId("");
     }
 
 
