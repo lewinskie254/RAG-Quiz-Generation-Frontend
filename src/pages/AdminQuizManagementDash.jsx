@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'; 
+import { useEffect, useState } from 'react'; 
 import { useParams } from 'react-router';
 import Title from '../components/Title';
 import SidePanelBtn from '../components/SidePanelBtn';

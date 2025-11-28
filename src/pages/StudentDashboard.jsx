@@ -3,9 +3,15 @@ import SidePanelBtn from '../components/SidePanelBtn';
 import Title from '../components/Title';
 import ProgressCard from '../components/ProgressCard';
 import UnitsCard from '../components/UnitsCard';
+import { useState } from 'react';
+import { useParams } from 'react-router';
 
 
 const StudentDashboard = () => {
+    const {studentId} = useParams()
+    const [studentQuizzes, setStudentQuizzes] = useState([]); 
+
+
     return (
         <div className="container">
             <div className="dashboard">

@@ -6,13 +6,16 @@ import Button from '../components/button';
 import Modal from '../components/Modal';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router';
 
 
 const AdminDashboard = () => {
+    const {adminId} = useParams()
     const [modalVisible, setModalVisible] = useState(false); 
     const [quizzes, setQuizzes] = useState([]); 
     const [units, setUnits] = useState([]); 
     const [courses, setCourses] = useState([]); 
+    const [teacherDetails, setTeacherDetails] = useState({})
     const [student, setStudents] = useState([]); 
     const showModal = () => setModalVisible(true);
 
@@ -22,13 +25,14 @@ const AdminDashboard = () => {
         await fetchUnits(); 
         await fetchCourses(); 
         await fetchAllStudents(); 
+        await fetchAdminDetails(); 
        }
     fetchData(); 
     }, [])
     
     const fetchQuizzes = async () => {
         try {
-            const response = await axios.get("http://127.0.0.1:8000/api/quiz/show-all-quizzes-by-teacher/ba836b7f-2f59-49c9-a0a7-c7e7feb13c96/")
+            const response = await axios.get(`http://127.0.0.1:8000/api/quiz/show-all-quizzes-by-teacher/${adminId}`)
             setQuizzes(response.data.quizzes); 
             console.log("Quizzes", response.data)
         } catch (err) {
@@ -38,7 +42,7 @@ const AdminDashboard = () => {
 
     const fetchUnits = async () => {
         try {
-            const response = await axios.get("http://127.0.0.1:8000/api/unit/show-all-units/")
+            const response = await axios.get(`http://127.0.0.1:8000/api/unit/show-units-by-teacher/${adminId}`)
             setUnits(response.data.units); 
             console.log("Units", response.data)
         } catch(err) {
@@ -64,11 +68,20 @@ const AdminDashboard = () => {
 
     const fetchAllStudents = async () => {
         try {
-            const response = await axios.get('http://127.0.0.1:8000/api/student/show-all-students-by-school/ee73aa34-0f26-46fe-92f1-85ba51435e01/')
+            const response = await axios.get(`http://127.0.0.1:8000/api/student/show-all-students-by-school/${teacherDetails.school}/`)
             console.log("students", response.data)
             setStudents(response.data.students)
         } catch (err){
             console.log(err); 
+        }
+    }
+
+    const fetchAdminDetails = async () => {
+        try{
+            const response = await axios.get(`http://127.0.0.1:8000/api/teacher/show-specific-teacher/${adminId}`)
+            setTeacherDetails(response.data.teacher)
+        } catch (err) {
+            console.log(err)
         }
     }
 
