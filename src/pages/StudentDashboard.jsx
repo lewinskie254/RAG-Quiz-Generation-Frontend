@@ -58,6 +58,15 @@ const StudentDashboard = () => {
     const getUnitName = (id) => {
         const unitToUse= studentUnits.find((unit) => unit.id === id)
         return unitToUse ? unitToUse.name : "No Unit Found"; 
+    } 
+
+    const getTotalQuizScore = () => {
+        var score = 0; 
+        for (var quiz of studentQuizzes) {
+            score += quiz.number_of_questions; 
+        }
+
+        return score; 
     }
 
     return (
@@ -84,7 +93,7 @@ const StudentDashboard = () => {
                   <ProgressCard 
                         currentScore={studentDetails.grade == 0 ? 1: studentDetails.grade}
                         outOfTerm = "Over"
-                        totalScore = "100"
+                        totalScore = {`${getTotalQuizScore()}`}
                         description = "Quiz Scores"
                   /> 
                   <div className="card">
