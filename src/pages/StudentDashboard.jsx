@@ -101,7 +101,7 @@ const StudentDashboard = () => {
                     <div className="scroll-view">
                         {
                             studentQuizzes.map((quiz, index)=> (
-                                <UnitsCard key={index} title={quiz.id} unitName={`Quiz For: ${getUnitName(quiz.unit)}`} to={`/admin-quiz/${quiz.id}`}/>
+                                <UnitsCard key={index} title={quiz.id} unitName={`Quiz For: ${getUnitName(quiz.unit)}`} to={`/student-quiz/${quiz.id}`}/>
                             ))
                         }
                     </div>

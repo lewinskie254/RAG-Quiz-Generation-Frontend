@@ -1,7 +1,7 @@
 const MultipleChoiceAnswer = (props) => {
     return (
         <label className="check-container">
-            <input type="checkbox" id ={props.id}/>
+            <input type="checkbox" value={props.value}/>
             <span className="checkmark"></span>
             {props.answer}
         </label>

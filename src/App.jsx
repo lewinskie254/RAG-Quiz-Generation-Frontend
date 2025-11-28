@@ -15,7 +15,7 @@ function App() {
       <Route path="/admin/:adminId" element={<AdminDashboard/>} />
       <Route path="/admin-quiz/:quizId" element={<AdminQuizView />} />
       <Route path="/admin-quiz-management/:unitId" element={<AdminQuizManagementDash />} />
-      <Route path="/student-quiz" element={<StudentQuizView />} />
+      <Route path="/student-quiz/:quizId" element={<StudentQuizView />} />
     </Routes>
   )
 }
