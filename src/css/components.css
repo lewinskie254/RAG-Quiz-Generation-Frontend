@@ -467,6 +467,13 @@
   color: var(--pure-white);
 }
 
+.unit-name {
+  color: var(--bluish-color);
+  font-family: var(--bebas-font-family);
+  font-size: 3rem;
+  margin: 1em;
+}
+
 .side-panel-a-btn:hover {
   color: var(--bluish-color);
 }

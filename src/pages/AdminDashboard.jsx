@@ -56,13 +56,10 @@ const AdminDashboard = () => {
         }
     }
 
-    const showCourseByName = (id) => {
+    const showByUnitName = (id) => {
         const unit = units.find((unit) => unit.id === id);
         if (!unit) return null;
-
-        const course = courses.find((course) => course.id === unit.course);
-        console.log(course)
-        return course ? course.name : null;
+        return unit ? unit.name : null;
     }
 
     const fetchAllStudents = async () => {
@@ -101,7 +98,7 @@ const AdminDashboard = () => {
                     <div className="admin-scroll-view">
                         {
                             quizzes.map((quiz, index) => (
-                                <AdminDashListView key={index} title={quiz.id} unitName={showCourseByName(quiz.unit)} nextLink = {`/admin-quiz/${quiz.id}`}/>
+                                <AdminDashListView key={index} title={quiz.id} unitName={showByUnitName(quiz.unit)} nextLink = {`/admin-quiz/${quiz.id}`}/>
                             ))
                         }
                     </div>

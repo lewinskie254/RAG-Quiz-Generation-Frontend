@@ -11,11 +11,15 @@ const AdminQuizView = (props) => {
     const {quizId} = useParams()
     const [questions, setQuestions] = useState([]); 
     const [units, setUnits] = useState([]);
+    const [quizDetails, setQuizDetails] = useState({})
+    const [quizDetailsLoaded, setQuizDetailsLoaded] = useState(false) 
+    const [pageTitle, setPageTitle] = useState("");
 
     useEffect(() => { 
         const fetchData = async () => {
             await fetchQuiz(); 
             await fetchAllUnits();
+            await fetchQuizDetails(); 
             console.log("Fetching data complete."); 
         }
         fetchData(); 
@@ -31,16 +35,39 @@ const AdminQuizView = (props) => {
         }
     }
 
+    const fetchQuizDetails = async () => {
+        try {
+            const response = await axios.get(`http://127.0.0.1:8000/api/quiz/show-specific-quiz/${quizId}`)
+            setQuizDetails(response.data.quiz); 
+            setQuizDetailsLoaded(true)
+            console.log("Quiz Details", response.data.quiz)
+        } catch (err) {
+            console.error(err); 
+        }
+    }
+
     const fetchAllUnits = async() => {
         try {
             const response = await axios.get(`http://127.0.0.1:8000/api/unit/show-all-units`)
-            const units = response.data; 
             setUnits(response.data.units); 
-            console.log(response.data); 
         }catch (e) {
             console.log(`error fetching units ${e}`)
         }
     }
+
+    useEffect(() => {
+        unitNameForQuiz();
+    }, [quizDetailsLoaded, units])
+
+    const unitNameForQuiz = () => {
+        const unit = units.find((u) => u.id === quizDetails.unit);
+
+        if (unit) {
+            setPageTitle(unit.name);
+        } else {
+            setPageTitle("Unit not Found");
+        }
+    };
 
     return (
         <div className="container">
@@ -48,10 +75,9 @@ const AdminQuizView = (props) => {
                 <aside className="quiz-panel">
                     <ul className="quiz-side-panel">
                         <Title title="Quizzes"/>
-                        <hr className='quiz-side-panel-underline'/>
+                                   <hr className='quiz-side-panel-underline'/>
                         {
                             units.map((unit, index) => {
-                                console.log(unit);
                                 return (
                                     <SidePanelBtn 
                                         key={index} 
@@ -64,6 +90,11 @@ const AdminQuizView = (props) => {
                     </ul>
                 </aside>
                 <div className="admin-quiz-view">
+                {
+                    quizDetailsLoaded && (
+                        <h1 className="unit-name">{`UNIT: ${pageTitle}`}</h1>
+                    )
+                }
                 {questions.map((question, index) => {
                     return <AdminQuestionAndAnswer key={index} question={question} />;
                 })}
