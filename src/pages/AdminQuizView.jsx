@@ -82,6 +82,7 @@ const AdminQuizView = (props) => {
                                     <SidePanelBtn 
                                         key={index} 
                                         title={unit.name} 
+                                        active={unit.name === pageTitle}
                                         to={`/admin-quiz-management/${unit.id}/`} 
                                     />
                                 );

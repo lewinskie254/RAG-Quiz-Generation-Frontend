@@ -474,6 +474,16 @@
   margin: 1em;
 }
 
+.active-side-panel {
+  background-color: var(--pure-white);
+  color: var(--bluish-color);
+}
+
+.active-side-panel a{
+  color: var(--bluish-color);
+  font-weight: bold;
+}
+
 .side-panel-a-btn:hover {
   color: var(--bluish-color);
 }
