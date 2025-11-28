@@ -5,12 +5,60 @@ import ProgressCard from '../components/ProgressCard';
 import UnitsCard from '../components/UnitsCard';
 import { useState } from 'react';
 import { useParams } from 'react-router';
+import axios from 'axios';
+import { useEffect } from 'react';
 
 
 const StudentDashboard = () => {
     const {studentId} = useParams()
     const [studentQuizzes, setStudentQuizzes] = useState([]); 
+    const [studentUnits, setStudentUnits] = useState([]); 
+    const [studentDetails, setStudentDetails] = useState({}); 
 
+    
+    useEffect(() => {
+        const fetchData = async () =>{
+            await fetchQuizzes(); 
+            await fetchUnits(); 
+            await fetchStudentDetails(); 
+        }
+        fetchData(); 
+    }, []); 
+
+
+    const fetchQuizzes = async () => {
+        try{
+            const response = await axios.get(`http://127.0.0.1:8000/api/quiz/show-all-quizzes-from-student-id/${studentId}`)
+            setStudentQuizzes(response.data.quizzes); 
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
+
+    const fetchUnits = async () => {
+        try {
+            const response = await axios.get(`http://127.0.0.1:8000/api/student/show-all-units-for-student/${studentId}`)
+            setStudentUnits(response.data.units); 
+        } catch (err) {
+            console.error(err); 
+        }
+    }
+
+    const fetchStudentDetails = async () => {
+        try {
+            const response = await axios.get(`http://127.0.0.1:8000/api/student/show-student-details/${studentId}`)
+            setStudentDetails(response.data.student); 
+            console.log("Student details", response.data)
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
+    const getUnitName = (id) => {
+        const unitToUse= studentUnits.find((unit) => unit.id === id)
+        return unitToUse ? unitToUse.name : "No Unit Found"; 
+    }
 
     return (
         <div className="container">
@@ -30,31 +78,33 @@ const StudentDashboard = () => {
                   <ProgressCard 
                         currentScore="2"
                         outOfTerm = "Over"
-                        totalScore = "12"
-                        description = "Units Covered"
+                        totalScore = {studentQuizzes.length}
+                        description = "Quizzes Completed"
                   /> 
                   <ProgressCard 
-                        currentScore="49"
+                        currentScore={studentDetails.grade == 0 ? 1: studentDetails.grade}
                         outOfTerm = "Over"
-                        totalScore = "80"
+                        totalScore = "100"
                         description = "Quiz Scores"
                   /> 
                   <div className="card">
-                    <h1 className='blue card-heading'>Units Covered</h1>
+                    <h1 className='blue card-heading'>Pending Quizzes</h1>
                     <div className="scroll-view">
-                        <UnitsCard title="Unit 5" unitName="Vendor Coordination and Contracts" />
-                        <UnitsCard title="Unit 6" unitName="Event Design and Theming" />
-                        <UnitsCard title="Unit 7" unitName="Risk Management and Compliance" />
-                        <UnitsCard title="Unit 8" unitName="Event Execution and Evaluation" />
+                        {
+                            studentQuizzes.map((quiz, index)=> (
+                                <UnitsCard key={index} title={quiz.id} unitName={`Quiz For: ${getUnitName(quiz.unit)}`} to={`/admin-quiz/${quiz.id}`}/>
+                            ))
+                        }
                     </div>
                   </div>
                    <div className="card">
-                    <h1 className='blue card-heading'>Quizzes Completed</h1>
+                    <h1 className='blue card-heading'>My Units</h1>
                     <div className="scroll-view">
-                        <UnitsCard title="Unit 1" unitName="Introduction to Event Management" />
-                        <UnitsCard title="Unit 2" unitName="Client Needs Assessment" />
-                        <UnitsCard title="Unit 3" unitName="Budgeting and Cost Control" />
-                        <UnitsCard title="Unit 4" unitName="Venue Selection and Logistics" />
+                        {
+                            studentUnits.map((unit, index)=> (
+                                <UnitsCard key={index} title={unit.id} unitName={`Unit: ${unit.name}`}/>
+                            ))
+                        }
                     </div>
                   </div>
                 </div>

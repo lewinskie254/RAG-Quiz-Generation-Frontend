@@ -261,6 +261,10 @@
   gap: 20px;
 }
 
+.unit-card-link{
+  text-decoration: none;
+}
+
 .score-tab {
   width: 50%;
   padding: 2em;

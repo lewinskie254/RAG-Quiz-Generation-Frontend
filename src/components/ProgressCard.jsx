@@ -4,6 +4,7 @@ const ProgressCard = (props) => {
 
     const calculateScore = () => {
         const currentScore = parseFloat(props.currentScore);
+        if (currentScore == 1) return "0%"; 
         const totalScore = parseFloat(props.totalScore);
 
         return `${Math.round((currentScore / totalScore) * 100)}%`;
