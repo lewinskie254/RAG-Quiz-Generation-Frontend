@@ -10,7 +10,7 @@ const StudentRegister = () => {
     const [name, setName] = useState("")
     const [username, setUsername] = useState("") 
     const [password, setPassword] = useState("")
-    [confirmPassword, setConfirmPassword] = useState("")
+    const [confirmPassword, setConfirmPassword] = useState("")
     const [school, setSchool] = useState("")
     const [course, setCourse] = useState("")
     const [phoneNumber, setPhoneNumber] = useState("")
@@ -51,7 +51,8 @@ const StudentRegister = () => {
     }
 
 
-    const handleRegister = async () => {    
+    const handleRegister = async (e) => {    
+        e.preventDefault(); 
         const user = {
             name,
             username, 
@@ -76,73 +77,79 @@ const StudentRegister = () => {
         <div className="input-div">
             <Title title="Student Registration Page" />
             <div className="input-section">
-                <InputField
-                    placeholder="Full Names"
-                    value={name}
-                    onChange={setName}
-                />
+                <form onSubmit={handleRegister}>
+                    <InputField
+                        placeholder="Full Names"
+                        value={name}
+                        onChange={setName}
+                        req={true}
+                    />
 
-                <InputField
-                    placeholder="Phone Number"
-                    type="text"
-                    value={phoneNumber}
-                    onChange={setPhoneNumber}
-                />
+                    <InputField
+                        placeholder="Phone Number"
+                        type="text"
+                        value={phoneNumber}
+                        onChange={setPhoneNumber}
+                    />
 
-                <InputField
-                    placeholder="Username"
-                    value={username}
-                    onChange={setUsername}
-                />
+                    <InputField
+                        placeholder="Username"
+                        value={username}
+                        onChange={setUsername}
+                        req={true}
+                    />
 
-                <InputField
-                    placeholder="Password"
-                    type="password"
-                    value={password}
-                    onChange={setPassword}
-                />
+                    <InputField
+                        placeholder="Password"
+                        type="password"
+                        value={password}
+                        onChange={setPassword}
+                        req={true}
+                    />
 
-                <InputField
-                    placeholder="Confirm Password"
-                    type="password"
-                    value={confirmPassword}
-                    onChange={setConfirmPassword}
-                /> 
+                    <InputField
+                        placeholder="Confirm Password"
+                        type="password"
+                        value={confirmPassword}
+                        onChange={setConfirmPassword}
+                        req={true}
+                    /> 
 
-                <select
-                    className="select-class"
-                    name="school"
-                    id="school"
-                    value={school}
-                    onChange={(e) => setSchool(e.target.value)}
-                >
-                  <option value="">Select School</option>
-                  {schools.map((school) => (
-                      <option key={school.id} value={school.id}>
-                          {school.name}
-                      </option>
-                  ))}
-                </select>
+                    <select
+                        className="select-class"
+                        name="school"
+                        id="school"
+                        value={school}
+                        onChange={(e) => setSchool(e.target.value)}
+                    >
+                    <option value="">Select School</option>
+                    {schools.map((school) => (
+                        <option key={school.id} value={school.id}>
+                            {school.name}
+                        </option>
+                    ))}
+                    </select>
 
-                <select
-                    className="select-class"
-                    name="course"
-                    id="course"
-                    value={course}
-                    onChange={(e) => {
-                      console.log("Selected course:", e.target.value);
-                      setCourse(e.target.value);
-                    }}
-                >
-                  <option value="">Select Course</option>
-                  {courses.map((c) => (
-                      <option key={c.id} value={c.id}>
-                          {c.name}
-                      </option>
-                  ))}
-                </select>
-                <Button name="Register" onClick={handleRegister} /> 
-                <LoginOrRegister mainText= "Already a Member? " anchorText="Login Here" href="https://www.google.com" />
+                    <select
+                        className="select-class"
+                        name="course"
+                        id="course"
+                        value={course}
+                        onChange={(e) => {
+                        console.log("Selected course:", e.target.value);
+                        setCourse(e.target.value);
+                        }}
+                    >
+                    <option value="">Select Course</option>
+                    {courses.map((c) => (
+                        <option key={c.id} value={c.id}>
+                            {c.name}
+                        </option>
+                    ))}
+                    </select>
+                    <Button name="Register"/> 
+                </form>
+                <LoginOrRegister mainText= "Already a Member? " anchorText="Login Here" to="/" />
             </div>
         </div>
         <div className="logo-div">

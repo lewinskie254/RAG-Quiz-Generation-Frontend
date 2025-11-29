@@ -1,6 +1,6 @@
 
 
-const InputField = ({ label, type="text", placeholder, value, onChange }) => {
+const InputField = ({ label, type="text", placeholder, value, onChange, req }) => {
     return (
         <div>
             <label className="input-field-label">{label}</label>
@@ -10,6 +10,7 @@ const InputField = ({ label, type="text", placeholder, value, onChange }) => {
                 placeholder={placeholder}
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
+                required={req} 
             />
         </div>
     );

@@ -1,7 +1,9 @@
+import { Link } from "react-router";
+
 const LoginOrRegister = (props) => {
     return (
         <div className="bottom-register-text">
-            <p>{props.mainText} <a className="login-or-register" href={props.href}>{props.anchorText}</a></p>
+            <p>{props.mainText} <Link className="login-or-register" to={props.to}>{props.anchorText}</Link></p>
         </div>
     )
 }
