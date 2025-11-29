@@ -65,7 +65,6 @@ const StudentDashboard = () => {
         for (var quiz of studentQuizzes) {
             score += quiz.number_of_questions; 
         }
-
         return score; 
     }
 
@@ -87,13 +86,13 @@ const StudentDashboard = () => {
                   <ProgressCard 
                         currentScore="2"
                         outOfTerm = "Over"
-                        totalScore = {studentQuizzes.length}
+                        totalScore = {studentQuizzes.length == 0 ? 1 : studentQuizzes.length}
                         description = "Quizzes Completed"
                   /> 
                   <ProgressCard 
                         currentScore={studentDetails.grade == 0 ? 1: studentDetails.grade}
                         outOfTerm = "Over"
-                        totalScore = {`${getTotalQuizScore()}`}
+                        totalScore = {`${getTotalQuizScore() == 0? 1 : getTotalQuizScore()}`}
                         description = "Quiz Scores"
                   /> 
                   <div className="card">

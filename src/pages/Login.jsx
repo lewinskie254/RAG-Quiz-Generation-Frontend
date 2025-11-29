@@ -4,24 +4,52 @@ import Button from "../components/button";
 import Title from "../components/Title";
 import LoginOrRegister from "../components/LoginOrRegister";
 import { useState, useRef, useEffect } from "react";
-
+import axios from "axios";
+import { useNavigate } from "react-router";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const errRef = useRef(); 
 
   const [username, setUsername] = useState(""); 
   const [password, setPassword] = useState(""); 
   const [errMsg, setErrMessage] = useState(""); 
   const [success, setSuccess] = useState(false); 
+  const [user, setUser] = useState({})
+  const [student, setStudent] = useState("")
+  const [teacher, setTeacher] = useState("");
 
 
   useEffect(()=> {
     setErrMessage(""); 
   }, [username, password])
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault(); 
-    console.log("submitted")
+    try {
+      const response = await axios.post("http://127.0.0.1:8000/api/login/authenticate-user/", {username, password}); 
+      const loggedInUser = response.data.user;
+      const studentId = response.data.student_id; 
+      const teacherId = response.data.teacher_id; 
+      console.log(response.data); 
+
+      setUser(loggedInUser);
+      setStudent(studentId)
+      setTeacher(teacherId)
+      setPassword("");
+      setUsername("");
+      setSuccess(true);
+
+      if (loggedInUser.role.toLowerCase() === "student") {
+        navigate(`/student/${studentId}`);
+      } else if (loggedInUser.role.toLowerCase() === "teacher") {
+        navigate(`/admin/${teacherId}`);
+      }
+        
+    } catch (err) {
+      console.error(err); 
+    }
   }
 
   return (
