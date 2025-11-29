@@ -84,15 +84,15 @@ const StudentDashboard = () => {
 
                 <div className="dashboard-content">
                   <ProgressCard 
-                        currentScore="2"
+                        currentScore="1"
                         outOfTerm = "Over"
-                        totalScore = {studentQuizzes.length == 0 ? 1 : studentQuizzes.length}
+                        totalScore = {studentQuizzes.length == 0 ? 7 : studentQuizzes.length}
                         description = "Quizzes Completed"
                   /> 
                   <ProgressCard 
                         currentScore={studentDetails.grade == 0 ? 1: studentDetails.grade}
                         outOfTerm = "Over"
-                        totalScore = {`${getTotalQuizScore() == 0? 1 : getTotalQuizScore()}`}
+                        totalScore = {`${getTotalQuizScore() == 0? 100 : getTotalQuizScore()}`}
                         description = "Quiz Scores"
                   /> 
                   <div className="card">

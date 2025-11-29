@@ -3,15 +3,16 @@ import "../css/components.css";
 import Button from "../components/button";
 import Title from "../components/Title";
 import LoginOrRegister from "../components/LoginOrRegister";
-import { useState, useRef, useEffect } from "react";
-import axios from "axios";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router";
+import AuthContext from "../context/AuthProvider";
+import axios from "../api/axios";
+
+
 
 const Login = () => {
   const navigate = useNavigate();
-
-  const errRef = useRef(); 
-
+  const {setAuth }= useContext(AuthContext); 
   const [username, setUsername] = useState(""); 
   const [password, setPassword] = useState(""); 
   const [errMsg, setErrMessage] = useState(""); 
@@ -28,15 +29,26 @@ const Login = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault(); 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/login/authenticate-user/", {username, password}); 
+      const response = await axios.post("login/authenticate-user/", {username, password}); 
       const loggedInUser = response.data.user;
       const studentId = response.data.student_id; 
       const teacherId = response.data.teacher_id; 
-      console.log(response.data); 
+      const access = response.data.access; 
+      const refresh = response.data.refresh; 
+      console.log(response.data)
+
+      localStorage.setItem("refreshToken", refresh);
 
       setUser(loggedInUser);
-      setStudent(studentId)
-      setTeacher(teacherId)
+      setStudent(studentId); 
+      setTeacher(teacherId); 
+      setAuth({ 
+        student_id: studentId, 
+        teacher_id: teacherId, 
+        access, 
+        refresh, 
+        user: loggedInUser 
+      });
       setPassword("");
       setUsername("");
       setSuccess(true);
