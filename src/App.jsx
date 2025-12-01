@@ -11,6 +11,8 @@ import AuthContext from './context/AuthProvider.jsx';
 import * as jwt_decode from "jwt-decode";
 import { useContext, useState, useEffect } from "react";
 import axios from "./api/axios";
+import Registration from './pages/Registration.jsx';
+import AdminRegister from './pages/AdminRegister.jsx';
 
 
 function App() {
@@ -81,7 +83,9 @@ function App() {
           )
         }
       />
-      <Route path="/register" element={<StudentRegister/>} />
+      <Route path="/register" element={<Registration/>} />
+      <Route path="/register-student" element={<StudentRegister/>} />
+      <Route path="/register-teacher" element={<AdminRegister/>} />
       <Route path="/student/:studentId" element={<StudentDashboard/>} />
       <Route path="/admin/:adminId" element={<AdminDashboard/>} />
       <Route path="/admin-quiz/:quizId" element={<AdminQuizView />} />

@@ -3,7 +3,7 @@
 const Button = (props) => {
     return (
         <div className="btn-wrapper">
-            <button className="btn" onClick ={props.onClick}>{props.name}</button>
+            <button className={`btn ${props.inverse ? 'inverse' : ''}`} onClick ={props.onClick}>{props.name}</button>
         </div>
     )
 }

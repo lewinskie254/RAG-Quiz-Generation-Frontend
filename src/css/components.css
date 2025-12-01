@@ -88,6 +88,17 @@
     transition: all .5s ease;
 }
 
+.inverse {
+    font-family: "Bebas Neue", sans-serif;
+    color: var(--bluish-color); 
+    background-color: var(--pure-white);
+    padding: 10px 40px;
+    font-size: 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
 
 .btn:hover {
     color: var(--pure-white);
@@ -133,6 +144,17 @@
 .failed p {
   color: red;
 }
+
+.register-as-teacher{
+  width: 500px;
+  height: 500px;
+  padding: 20px;
+}
+
+.register-as-teacher img {
+  width: 100%;
+}
+
 
 
 .btn-wrapper {

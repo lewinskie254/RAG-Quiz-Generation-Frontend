@@ -116,7 +116,7 @@ const AdminRegister = () => {
                 </select>
 
                 <Button name="Register" onClick={handleRegister} /> 
-                <LoginOrRegister mainText= "Already a Member? " anchorText="Login Here" href="https://www.google.com" />
+                <LoginOrRegister mainText= "Already a Member? " anchorText="Login Here" to='/' />
             </div>
         </div>
         <div className="logo-div">
