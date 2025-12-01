@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import Button from './CoolButton.jsx';
 import { useState, useEffect } from 'react';
-import { useNavigate, useParams  } from 'react-router';
+import { useNavigate } from 'react-router';
 import axios from '../api/axios.jsx';
 
 export default function Modal(props) {

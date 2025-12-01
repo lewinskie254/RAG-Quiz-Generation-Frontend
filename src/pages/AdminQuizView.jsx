@@ -27,7 +27,7 @@ const AdminQuizView = (props) => {
 
     const fetchQuiz = async () => {
         try{
-           const response = await axios.get(`http://127.0.0.1:8000/api/quiz/show-all-questions-per-quiz/${quizId}/`);
+           const response = await axios.get(`/quiz/show-all-questions-per-quiz/${quizId}/`);
            const questions = response.data.questions; 
             setQuestions(questions); 
         } catch (e) {
@@ -37,7 +37,7 @@ const AdminQuizView = (props) => {
 
     const fetchQuizDetails = async () => {
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/quiz/show-specific-quiz/${quizId}`)
+            const response = await axios.get(`/quiz/show-specific-quiz/${quizId}`)
             setQuizDetails(response.data.quiz); 
             setQuizDetailsLoaded(true)
             console.log("Quiz Details", response.data.quiz)
@@ -48,7 +48,7 @@ const AdminQuizView = (props) => {
 
     const fetchAllUnits = async() => {
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/unit/show-all-units`)
+            const response = await axios.get(`/api/unit/show-all-units`)
             setUnits(response.data.units); 
         }catch (e) {
             console.log(`error fetching units ${e}`)
