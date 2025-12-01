@@ -4,7 +4,7 @@ import Button from '../components/CoolButton.jsx';
 import Title from "../components/Title";
 import LoginOrRegister from "../components/LoginOrRegister";
 import { useState, useEffect} from "react";
-import axios from "axios";
+import axios from "../api/axios.jsx";
 import Logo from "../assets/logo.jpg";
 
 
@@ -25,7 +25,7 @@ const AdminRegister = () => {
 
     const fetchSchools = async () => {
       try {
-            const response = await axios.get('http://127.0.0.1:8000/api/school/show-all-schools/');
+            const response = await axios.get('/school/show-all-schools/');
             console.log(response.data); 
             setSchools(response.data.schools); 
         } catch (error) {

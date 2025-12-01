@@ -3,8 +3,7 @@ import { useParams } from 'react-router';
 import Title from '../components/Title';
 import SidePanelBtn from '../components/SidePanelBtn';
 import AdminDashListView from '../components/AdminDashListView';
-import axios from 'axios';
-
+import axios from '../api/axios';
 
 export default function AdminQuizManagementDash() {
     const {unitId} = useParams()
@@ -21,7 +20,7 @@ export default function AdminQuizManagementDash() {
 
     const fetchQuizzes = async () => {
         try{
-            const response = await axios.get(`http://127.0.0.1:8000/api/quiz/show-all-quizzes-per-unit/${unitId}/`)
+            const response = await axios.get(`/quiz/show-all-quizzes-per-unit/${unitId}/`)
             console.log(response.data)
             setQuizzes(response.data.quizzes); 
         }catch (e) {
@@ -31,7 +30,7 @@ export default function AdminQuizManagementDash() {
 
     const fetchUnitDetails = async() => {
         try{
-            const response = await axios.get(`http://127.0.0.1:8000/api/unit/show-specific-unit/${unitId}/`)
+            const response = await axios.get(`/unit/show-specific-unit/${unitId}/`)
             console.log(response.data)
             setUnit(response.data.unit) 
         }catch (e) {

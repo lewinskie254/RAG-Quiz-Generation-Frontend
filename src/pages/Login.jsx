@@ -29,7 +29,7 @@ const Login = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault(); 
     try {
-      const response = await axios.post("login/authenticate-user/", {username, password}); 
+      const response = await axios.post("/login/authenticate-user/", {username, password}); 
       const loggedInUser = response.data.user;
       const studentId = response.data.student_id; 
       const teacherId = response.data.teacher_id; 

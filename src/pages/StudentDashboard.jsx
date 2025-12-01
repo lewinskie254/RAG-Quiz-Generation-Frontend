@@ -5,7 +5,7 @@ import ProgressCard from '../components/ProgressCard';
 import UnitsCard from '../components/UnitsCard';
 import { useState } from 'react';
 import { useParams } from 'react-router';
-import axios from 'axios';
+import axios from '../api/axios';
 import { useEffect } from 'react';
 
 
@@ -28,7 +28,7 @@ const StudentDashboard = () => {
 
     const fetchQuizzes = async () => {
         try{
-            const response = await axios.get(`http://127.0.0.1:8000/api/quiz/show-all-quizzes-from-student-id/${studentId}`)
+            const response = await axios.get(`/quiz/show-all-quizzes-from-student-id/${studentId}`)
             setStudentQuizzes(response.data.quizzes); 
         } catch (err) {
             console.error(err)
@@ -38,7 +38,7 @@ const StudentDashboard = () => {
 
     const fetchUnits = async () => {
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/student/show-all-units-for-student/${studentId}`)
+            const response = await axios.get(`/student/show-all-units-for-student/${studentId}`)
             setStudentUnits(response.data.units); 
         } catch (err) {
             console.error(err); 
@@ -47,7 +47,7 @@ const StudentDashboard = () => {
 
     const fetchStudentDetails = async () => {
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/student/show-student-details/${studentId}`)
+            const response = await axios.get(`/student/show-student-details/${studentId}`)
             setStudentDetails(response.data.student); 
             console.log("Student details", response.data)
         } catch (err) {

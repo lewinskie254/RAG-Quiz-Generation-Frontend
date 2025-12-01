@@ -3,7 +3,7 @@ import Title from "../components/Title";
 import '../css/components.css'; 
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../api/axios";
 import ImageBtn from "../components/ImageBtn";
 import MultipleChoiceAnswer from "../components/MultipleChoiceAnswer";
 import Question from "../components/Question";

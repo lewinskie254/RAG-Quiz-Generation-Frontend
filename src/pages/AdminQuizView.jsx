@@ -2,7 +2,7 @@ import SidePanelBtn from "../components/SidePanelBtn";
 import Title from "../components/Title";
 import '../css/components.css'; 
 import AdminQuestionAndAnswer from "../components/AdminQuestionAndAnswer";
-import axios from "axios";
+import axios from "../api/axios";
 import { useEffect, useState} from "react";
 import { useParams } from "react-router";
 

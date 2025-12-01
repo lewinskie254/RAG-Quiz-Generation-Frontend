@@ -1,7 +1,7 @@
 import Question from "./Question";
 import AdminMultipleChoiceAnswer from "./AdminMultipleChoiceAnswer";
 import React, { useEffect, useState} from "react";
-import axios from "axios";
+import axios from "../api/axios";
 
 
 const AdminQuestionAndAnswer = ({ question }) => {
@@ -35,7 +35,7 @@ const AdminQuestionAndAnswer = ({ question }) => {
 
     const fetchMultipleChoices = async(id) => {
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/quiz/show-multiple-choices-for-question/${id}`); 
+            const response = await axios.get(`/quiz/show-multiple-choices-for-question/${id}`); 
             setChoices(response.data.choices)
         }catch (e) {
             console.log(`error: ${e}`); 

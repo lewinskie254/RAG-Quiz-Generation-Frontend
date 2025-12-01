@@ -3,8 +3,7 @@ import ReactDom from 'react-dom'
 import Button from './CoolButton.jsx';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
-import axios from 'axios';
-import AdminQuizView from '../pages/AdminQuizView';
+import axios from '../api/axios.jsx';
 
 export default function Modal(props) {
     var visible = props.visible; 
@@ -35,7 +34,7 @@ export default function Modal(props) {
 
     const fetchCourses = async () => {
         try{
-            const response = await axios.get('http://127.0.0.1:8000/api/course/show-all-courses/')
+            const response = await axios.get('/course/show-all-courses/')
             setCourses(response.data.courses)
         }catch (e) {
             console.log(`Error: ${e}`)
@@ -52,7 +51,7 @@ export default function Modal(props) {
     const fetchUnits = async (courseId) => {
         try {
             const response = await axios.get(
-                `http://127.0.0.1:8000/api/unit/show-units-by-course/${courseId}`
+                `/unit/show-units-by-course/${courseId}`
             );
             console.log(response.data); 
             setMyUnits(response.data.units);
@@ -68,7 +67,7 @@ export default function Modal(props) {
         try {
             console.log(`selected unit: ${selectedUnit}`)
             const response = await axios.get(
-                `quiz/generate-quiz/e1495fc3-f74d-4e29-8cef-f1a241683857/${selectedUnit}`
+                `/quiz/generate-quiz/e1495fc3-f74d-4e29-8cef-f1a241683857/${selectedUnit}`
             );
             setGeneratedQuiz(true); 
             setGeneratedQuizId(response.data.quiz); 

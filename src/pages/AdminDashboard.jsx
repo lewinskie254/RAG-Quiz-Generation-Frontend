@@ -5,7 +5,7 @@ import AdminDashListView from '../components/AdminDashListView';
 import Button from "../components/CoolButton.jsx"
 import Modal from '../components/Modal';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../api/axios.jsx';
 import { useParams } from 'react-router';
 
 
@@ -32,7 +32,7 @@ const AdminDashboard = () => {
     
     const fetchQuizzes = async () => {
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/quiz/show-all-quizzes-by-teacher/${adminId}`)
+            const response = await axios.get(`/quiz/show-all-quizzes-by-teacher/${adminId}`)
             setQuizzes(response.data.quizzes); 
             console.log("Quizzes", response.data)
         } catch (err) {
