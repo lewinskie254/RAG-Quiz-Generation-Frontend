@@ -7,7 +7,7 @@ import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router";
 import AuthContext from "../context/AuthProvider";
 import axios from "../api/axios";
-
+import Logo from "../assets/logo.jpg";
 
 
 const Login = () => {
@@ -68,7 +68,7 @@ const Login = () => {
     <div className="container">
       <div className="login">
         <div className="logo-div">
-          <img src="src/assets/logo.jpg" alt="Logo" />
+          <img src={Logo} alt="Logo" />
         </div>
         <div className="input-div">
             <Title title="Login Page"/>

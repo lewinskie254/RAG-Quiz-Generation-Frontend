@@ -1,5 +1,7 @@
 import Button from '../components/CoolButton.jsx'; 
 import { useNavigate } from 'react-router';
+import Teacher from "../assets/teacher.png";
+import Student from "../assets/student.png"; 
 
 export default function Registration() {
     const navigate = useNavigate()
@@ -10,13 +12,13 @@ export default function Registration() {
       <div className="register">
         <div className="input-div">
             <div className="register-as-teacher">
-                <img src="src/assets/teacher.png"/>
+                <img src={Teacher}/>
                 <Button name="Register as teacher" inverse={true} onClick = {() =>  navigate('/register-teacher')}/>
             </div>
         </div>
         <div className="logo-div">
            <div className="register-as-student">
-                <img src="src/assets/student.png"/>
+                <img src={Student}/>
                 <Button name="Register as Student" onClick ={() =>  navigate('/register-student')}/>
             </div>
         </div>

@@ -6,6 +6,7 @@ import LoginOrRegister from "../components/LoginOrRegister";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import axios from "../api/axios.jsx";
+import Logo from "../assets/logo.jpg";
 
 const StudentRegister = () => {
     const navigate = useNavigate(); 
@@ -198,7 +199,7 @@ const StudentRegister = () => {
             </div>
         </div>
         <div className="logo-div">
-          <img src="src/assets/logo.jpg" alt="Logo" />
+          <img src={Logo} alt="Logo" />
         </div>
       </div>
     </div>

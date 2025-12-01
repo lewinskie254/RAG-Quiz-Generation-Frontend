@@ -42,7 +42,7 @@ const AdminDashboard = () => {
 
     const fetchUnits = async () => {
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/unit/show-units-by-teacher/${adminId}`)
+            const response = await axios.get(`/unit/show-units-by-teacher/${adminId}`)
             setUnits(response.data.units); 
             console.log("Units", response.data)
         } catch(err) {
@@ -52,7 +52,7 @@ const AdminDashboard = () => {
 
     const fetchCourses = async () => {
         try {
-            const response = await axios.get("http://127.0.0.1:8000/api/course/show-all-courses/")
+            const response = await axios.get("/course/show-all-courses/")
             setCourses(response.data.courses); 
             console.log("Courses", response.data)
         } catch (err) {
@@ -68,7 +68,7 @@ const AdminDashboard = () => {
 
     const fetchAllStudents = async () => {
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/student/show-all-students-by-school/${teacherDetails.school}/`)
+            const response = await axios.get(`/student/show-all-students-by-school/${teacherDetails.school}/`)
             console.log("students", response.data)
             setStudents(response.data.students)
         } catch (err){
@@ -78,7 +78,7 @@ const AdminDashboard = () => {
 
     const fetchAdminDetails = async () => {
         try{
-            const response = await axios.get(`http://127.0.0.1:8000/api/teacher/show-specific-teacher/${adminId}`)
+            const response = await axios.get(`/teacher/show-specific-teacher/${adminId}`)
             setTeacherDetails(response.data.teacher)
         } catch (err) {
             console.log(err)

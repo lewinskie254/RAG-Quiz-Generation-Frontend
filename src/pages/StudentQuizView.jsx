@@ -11,7 +11,6 @@ import backUrl from "../assets/back.svg";
 import nextUrl from "../assets/next.svg"
 import ProgressBar from "../components/ProgressBar";
 
-
 const StudentQuizView = () => {
      const {quizId} = useParams() 
      const [quizQuestions, setQuizQuestions] = useState([]);
@@ -34,7 +33,7 @@ const StudentQuizView = () => {
         const fetchChoicesData = async () => {
             const question = quizQuestions[currentId];
             setCurrentQuestion(question); // update state for UI
-            const response = await axios.get(`http://127.0.0.1:8000/api/quiz/show-multiple-choices-for-question/${question.id}`);
+            const response = await axios.get(`/quiz/show-multiple-choices-for-question/${question.id}`);
             setChoices(response.data.choices); 
             setIsLoaded(true); 
         }
@@ -46,7 +45,7 @@ const StudentQuizView = () => {
 
      const fetchQuizQuestions = async () => {
         try{
-            const response = await axios.get(`http://127.0.0.1:8000/api/quiz/show-all-questions-per-quiz/${quizId}`)
+            const response = await axios.get(`/quiz/show-all-questions-per-quiz/${quizId}`)
             setQuizQuestions(response.data.questions); 
         } catch (err) {
             console.error(err); 
@@ -55,7 +54,7 @@ const StudentQuizView = () => {
 
      const fetchChoicesForQuestion = async () => {
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/quiz/show-multiple-choices-for-question/${currentQuestion.id}`)
+            const response = await axios.get(`/quiz/show-multiple-choices-for-question/${currentQuestion.id}`)
             setChoices(response.data.choices); 
         } catch (err) {
             console.error(err)
