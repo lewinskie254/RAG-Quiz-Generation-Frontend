@@ -4,7 +4,7 @@ import Button from "../components/button";
 import Title from "../components/Title";
 import LoginOrRegister from "../components/LoginOrRegister";
 import { useState, useEffect, use } from "react";
-import axios from "axios";
+import axios from "../api/axios.jsx";
 
 const StudentRegister = () => {
     const [name, setName] = useState("")
@@ -27,7 +27,6 @@ const StudentRegister = () => {
     const fetchSchools = async () => {
       try {
             const response = await axios.get('http://127.0.0.1:8000/api/school/show-all-schools/');
-            console.log(response.data); 
             setSchools(response.data.schools); 
         } catch (error) {
             console.error("Error:", error.response?.data || error.message);
@@ -36,15 +35,8 @@ const StudentRegister = () => {
 
     const fetchCourses = async () => {
       try {
-            const response = await axios.get('http://127.0.0.1:8000/api/course/show-all-courses/');
-            console.log(response.data); 
+            const response = await axios.get('/course/show-all-courses/');
             setCourses(response.data.courses); 
-            setName(""); 
-            setPassword(""); 
-            setSchool("")
-            setPhoneNumber(""); 
-            setUsername(""); 
-            setConfirmPassword(""); 
     } catch (error) {
             console.error("Error:", error.response?.data || error.message);
         }
@@ -63,8 +55,14 @@ const StudentRegister = () => {
         };
         console.log(`Name: ${user.name} Course: ${user.course},  School: ${user.school}`)
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/student/add-student/', user, { headers: { "Content-Type": "application/json" } });
+            const response = await axios.post('student/add-student/', user, { headers: { "Content-Type": "application/json" } });
             console.log("Success:", response.data);
+            setName(""); 
+            setPassword(""); 
+            setSchool("")
+            setPhoneNumber(""); 
+            setUsername(""); 
+            setConfirmPassword(""); 
         } catch (error) {
             console.error("Error:", error.response?.data || error.message);
         }
@@ -136,7 +134,6 @@ const StudentRegister = () => {
                         id="course"
                         value={course}
                         onChange={(e) => {
-                        console.log("Selected course:", e.target.value);
                         setCourse(e.target.value);
                         }}
                     >
