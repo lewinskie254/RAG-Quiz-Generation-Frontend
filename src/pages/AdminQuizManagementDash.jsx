@@ -1,12 +1,14 @@
-import { useEffect, useState } from 'react'; 
+import { useContext, useEffect, useState } from 'react'; 
 import { useParams } from 'react-router';
 import Title from '../components/Title';
 import SidePanelBtn from '../components/SidePanelBtn';
 import AdminDashListView from '../components/AdminDashListView';
 import axios from '../api/axios';
+import AuthContext from '../context/AuthProvider';
 
 export default function AdminQuizManagementDash() {
     const {unitId} = useParams()
+    const { student_id, teacher_id, access, refresh, user } = useContext(AuthContext)
     const [quizzes, setQuizzes] = useState([]); 
     const [unit, setUnit] = useState({}); 
 
@@ -45,7 +47,7 @@ export default function AdminQuizManagementDash() {
                     <ul className="side-panel">
                         <Title title={unit.name}/>
                         <hr className='side-panel-underline'/>
-                        <SidePanelBtn title="Dashboard" to={`/`}/>
+                        <SidePanelBtn title="Dashboard" to={`/admin/${teacher_id}`}/>
 
                     </ul>
                 </aside>
