@@ -2,10 +2,13 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import Button from './CoolButton.jsx';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate, useParams  } from 'react-router';
 import axios from '../api/axios.jsx';
 
 export default function Modal(props) {
+
+    const teacherId = props.id; 
+
     var visible = props.visible; 
 
     if (!visible) return null; 
@@ -67,7 +70,7 @@ export default function Modal(props) {
         try {
             console.log(`selected unit: ${selectedUnit}`)
             const response = await axios.get(
-                `/quiz/generate-quiz/e1495fc3-f74d-4e29-8cef-f1a241683857/${selectedUnit}`
+                `/quiz/generate-quiz/${teacherId}/${selectedUnit}`
             );
             setGeneratedQuiz(true); 
             setGeneratedQuizId(response.data.quiz); 

@@ -103,7 +103,7 @@ const AdminDashboard = () => {
                         <Button name="Generate Quiz" onClick={showModal} />
                     </div>
                     {modalVisible && (
-                        <Modal visible={modalVisible} onClose={() => setModalVisible(false)} />
+                        <Modal visible={modalVisible} id ={adminId} onClose={() => setModalVisible(false)} />
                     )}
                 <div className="admin-cards">
                          <div className="admin-dash-card">
