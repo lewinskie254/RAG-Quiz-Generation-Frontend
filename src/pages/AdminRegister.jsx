@@ -5,6 +5,8 @@ import Title from "../components/Title";
 import LoginOrRegister from "../components/LoginOrRegister";
 import { useState, useEffect} from "react";
 import axios from "axios";
+import Logo from "../assets/logo.jpg";
+
 
 const AdminRegister = () => {
     const [name, setName] = useState("")
@@ -119,7 +121,7 @@ const AdminRegister = () => {
             </div>
         </div>
         <div className="logo-div">
-          <img src="src/assets/logo.jpg" alt="Logo" />
+          <img src={Logo} alt="Logo" />
         </div>
       </div>
     </div>
