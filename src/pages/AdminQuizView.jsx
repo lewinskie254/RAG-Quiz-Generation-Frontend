@@ -50,6 +50,7 @@ const AdminQuizView = (props) => {
         try {
             const response = await axios.get(`/api/unit/show-all-units`)
             setUnits(response.data.units); 
+            console.log(response.data.units)
         }catch (e) {
             console.log(`error fetching units ${e}`)
         }
