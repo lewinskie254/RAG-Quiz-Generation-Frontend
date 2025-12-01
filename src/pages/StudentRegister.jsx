@@ -32,7 +32,7 @@ const StudentRegister = () => {
 
     const fetchSchools = async () => {
       try {
-            const response = await axios.get('http://127.0.0.1:8000/api/school/show-all-schools/');
+            const response = await axios.get('/school/show-all-schools/');
             setSchools(response.data.schools); 
         } catch (error) {
             console.error("Error:", error.response?.data || error.message);
@@ -50,34 +50,47 @@ const StudentRegister = () => {
 
 
     const handleRegister = async (e) => {    
-        e.preventDefault(); 
-        const user = {
-            name,
-            username, 
-            phoneNumber, 
-            password,
-            course, 
-            school
-        };
-        try {
-            const response = await axios.post('student/add-student/', user, { headers: { "Content-Type": "application/json" } });
-            setLoaded(true); 
-            setSuccess(true); 
-            setName(""); 
-            setPassword(""); 
-            setSchool("")
-            setPhoneNumber(""); 
-            setUsername(""); 
-            setConfirmPassword(""); 
-            setTimeout(() => {
-                navigate("/"); 
-            }, 1000); 
-            setSuccess(false); 
-        } catch (error) {
-            setLoaded(true); 
-            setErrorMsg(error.response?.data)
-        }
+    e.preventDefault();
+
+    if (password !== confirmPassword) {
+        setErrorMsg("Passwords do not match");
+        setLoaded(true);
+        return;
+    }
+
+    const user = {
+        name,
+        username, 
+        phoneNumber, 
+        password,
+        course, 
+        school
     };
+
+    try {
+        await axios.post('student/add-student/', user, { headers: { "Content-Type": "application/json" } });
+        setLoaded(true); 
+        setSuccess(true); 
+        setName(""); 
+        setPassword(""); 
+        setConfirmPassword("");
+        setSchool("");
+        setPhoneNumber(""); 
+        setUsername(""); 
+
+        setTimeout(() => {
+            navigate("/"); 
+        }, 1000); 
+    } catch (error) {
+        setLoaded(true); 
+        setSuccess(false);
+        setErrorMsg("Something went wrong");
+        setTimeout(() => {
+            navigate("/register"); 
+        }, 1000);
+    }
+};
+
 
 
     return (
@@ -157,7 +170,7 @@ const StudentRegister = () => {
                     </select>
                     <Button name="Register"/> 
                 </form>
-                { loaded ? <div className="registration-success">
+                { loaded ? <div className={`registration-success ${success ? 'correct' : 'failed'}`}>
                     {
                         success ? <p>You have been registered Successfully</p> : <p>{errorMsg}</p>
                     }

@@ -121,6 +121,19 @@
     background-color: var(--input-focus-bg);
 }
 
+.registration-success {
+  padding: 20px;
+  background-color: var(--light-green-color);
+}
+
+.correct p {
+    color: var(--dark-green-color);
+}
+
+.failed p {
+  color: red;
+}
+
 
 .btn-wrapper {
   margin-top: 20px;
