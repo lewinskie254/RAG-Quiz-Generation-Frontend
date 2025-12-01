@@ -1,13 +1,12 @@
 import SidePanelBtn from "../components/SidePanelBtn";
 import Title from "../components/Title";
-import '../css/components.css'; 
-import AdminQuestionAndAnswer from "../components/AdminQuestionAndAnswer";
 import axios from "../api/axios";
 import { useEffect, useState} from "react";
 import { useParams } from "react-router";
 
 
 const AdminQuizView = (props) => {
+    const other = props.other; 
     const {quizId} = useParams()
     const [questions, setQuestions] = useState([]); 
     const [units, setUnits] = useState([]);
@@ -85,6 +84,7 @@ const AdminQuizView = (props) => {
                                         title={unit.name} 
                                         active={unit.name === pageTitle}
                                         to={`/admin-quiz-management/${unit.id}/`} 
+                                        other = {other}
                                     />
                                 );
                             })

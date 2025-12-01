@@ -111,7 +111,7 @@ const AdminDashboard = () => {
                     <div className="admin-scroll-view">
                         {
                             quizzes.map((quiz, index) => (
-                                <AdminDashListView key={index} title={quiz.id} unitName={showByUnitName(quiz.unit)} nextLink = {`/admin-quiz/${quiz.id}`}/>
+                                <AdminDashListView key={index} title={quiz.id} unitName={showByUnitName(quiz.unit)} nextLink = {`/admin-quiz/${quiz.id}`} other={adminId}/>
                             ))
                         }
                     </div>

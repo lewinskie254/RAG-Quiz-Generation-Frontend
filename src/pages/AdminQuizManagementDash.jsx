@@ -6,10 +6,9 @@ import AdminDashListView from '../components/AdminDashListView';
 import axios from '../api/axios';
 import AuthContext from '../context/AuthProvider';
 
-export default function AdminQuizManagementDash() {
+export default function AdminQuizManagementDash(props) {
     const {unitId} = useParams()
-    const { auth } = useContext(AuthContext);
-    const { teacher_id } = auth;
+    const teacher_id = props.other; 
     const [quizzes, setQuizzes] = useState([]); 
     const [unit, setUnit] = useState({}); 
 
