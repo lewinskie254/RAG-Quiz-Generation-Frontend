@@ -42,7 +42,7 @@ const AdminDashboard = () => {
 
     const fetchUnits = async () => {
         try {
-            const response = await axios.get(`/unit/show-units-by-teacher/${adminId}`)
+            const response = await axios.get(`/unit/show-all-units/`)
             setUnits(response.data.units); 
             console.log("Units", response.data)
         } catch(err) {
@@ -111,7 +111,7 @@ const AdminDashboard = () => {
                     <div className="admin-scroll-view">
                         {
                             quizzes.map((quiz, index) => (
-                                <AdminDashListView key={index} title={quiz.id} unitName={showByUnitName(quiz.unit)} nextLink = {`/admin-quiz/${quiz.id}`} other={adminId}/>
+                                <AdminDashListView key={index} title={quiz.id} unitName={showByUnitName(quiz.unit)} nextLink = {`/admin-quiz/${quiz.id}`}/>
                             ))
                         }
                     </div>

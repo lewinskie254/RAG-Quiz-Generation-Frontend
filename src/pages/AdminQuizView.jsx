@@ -4,7 +4,7 @@ import '../css/components.css';
 import axios from "../api/axios";
 import { useEffect, useState} from "react";
 import { useParams } from "react-router";
-import AdminQuestionAndAnswer from "../components/AdminQuestionAndAnswer.jsx";
+import AdminQuestionAndAnswer from "../components/AdminQuestionAndAnswer";
 
 const AdminQuizView = () => {
     const {quizId} = useParams()
