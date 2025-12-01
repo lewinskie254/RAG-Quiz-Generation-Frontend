@@ -3,23 +3,29 @@ import "../css/components.css";
 import Button from "../components/button";
 import Title from "../components/Title";
 import LoginOrRegister from "../components/LoginOrRegister";
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 import axios from "../api/axios.jsx";
 
 const StudentRegister = () => {
-    const [name, setName] = useState("")
-    const [username, setUsername] = useState("") 
-    const [password, setPassword] = useState("")
-    const [confirmPassword, setConfirmPassword] = useState("")
-    const [school, setSchool] = useState("")
-    const [course, setCourse] = useState("")
-    const [phoneNumber, setPhoneNumber] = useState("")
-    const [schools, setSchools] = useState([])
-    const [courses, setCourses] = useState([])
+    const navigate = useNavigate(); 
+    const [name, setName] = useState(""); 
+    const [username, setUsername] = useState(""); 
+    const [password, setPassword] = useState(""); 
+    const [confirmPassword, setConfirmPassword] = useState(""); 
+    const [school, setSchool] = useState(""); 
+    const [course, setCourse] = useState(""); 
+    const [phoneNumber, setPhoneNumber] = useState(""); 
+    const [schools, setSchools] = useState([]); 
+    const [courses, setCourses] = useState([]); 
+    const [success, setSuccess] = useState(false); 
+    const [loaded, setLoaded] = useState(false); 
+    const [errorMsg, setErrorMsg] =useState(""); 
+
     useEffect(() => {
       const fetchData = async () => {
-        await fetchSchools();   // wait for schools
-        await fetchCourses();   // then wait for courses
+        await fetchSchools();   
+        await fetchCourses();   
       };
       fetchData();
     }, []); 
@@ -53,18 +59,23 @@ const StudentRegister = () => {
             course, 
             school
         };
-        console.log(`Name: ${user.name} Course: ${user.course},  School: ${user.school}`)
         try {
             const response = await axios.post('student/add-student/', user, { headers: { "Content-Type": "application/json" } });
-            console.log("Success:", response.data);
+            setLoaded(true); 
+            setSuccess(true); 
             setName(""); 
             setPassword(""); 
             setSchool("")
             setPhoneNumber(""); 
             setUsername(""); 
             setConfirmPassword(""); 
+            setTimeout(() => {
+                navigate("/"); 
+            }, 1000); 
+            setSuccess(false); 
         } catch (error) {
-            console.error("Error:", error.response?.data || error.message);
+            setLoaded(true); 
+            setErrorMsg(error.response?.data)
         }
     };
 
@@ -146,6 +157,11 @@ const StudentRegister = () => {
                     </select>
                     <Button name="Register"/> 
                 </form>
+                { loaded ? <div className="registration-success">
+                    {
+                        success ? <p>You have been registered Successfully</p> : <p>{errorMsg}</p>
+                    }
+                </div>: <div></div> }
                 <LoginOrRegister mainText= "Already a Member? " anchorText="Login Here" to="/" />
             </div>
         </div>
