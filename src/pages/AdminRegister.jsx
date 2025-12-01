@@ -3,7 +3,7 @@ import "../css/components.css";
 import Button from "../components/button";
 import Title from "../components/Title";
 import LoginOrRegister from "../components/LoginOrRegister";
-import { useState, useEffect, use } from "react";
+import { useState, useEffect} from "react";
 import axios from "axios";
 
 const AdminRegister = () => {
