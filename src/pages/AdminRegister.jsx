@@ -42,9 +42,8 @@ const AdminRegister = () => {
                 password,
                 school
             };
-            console.log(`Name: ${user.name} School: ${user.school}`)
             try {
-                const response = await axios.post('http://127.0.0.1:8000/api/teacher/add-teacher/', user, { headers: { "Content-Type": "application/json" } });
+                const response = await axios.post('/teacher/add-teacher/', user, { headers: { "Content-Type": "application/json" } });
                 console.log("Success:", response.data);
                 setName(""); 
                 setPassword(""); 
