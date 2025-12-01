@@ -8,7 +8,8 @@ import AuthContext from '../context/AuthProvider';
 
 export default function AdminQuizManagementDash() {
     const {unitId} = useParams()
-    const { student_id, teacher_id, access, refresh, user } = useContext(AuthContext)
+    const { auth } = useContext(AuthContext);
+    const { teacher_id } = auth;
     const [quizzes, setQuizzes] = useState([]); 
     const [unit, setUnit] = useState({}); 
 
