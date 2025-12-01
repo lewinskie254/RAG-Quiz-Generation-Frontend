@@ -145,17 +145,44 @@
   color: red;
 }
 
-.register-as-teacher{
-  width: 500px;
-  height: 500px;
-  padding: 20px;
+/* Full screen container */
+.container {
+  width: 100vw;
+  height: 100vh;
 }
 
-.register-as-teacher img {
+/* Two equal halves */
+.register {
+  display: flex;
   width: 100%;
+  height: 100%;
 }
 
+/* Left + right side */
+.register-as-teacher,
+.register-as-student {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 40px;
+}
 
+/* Images */
+.register-as-teacher img,
+.register-as-student img {
+  width: 100%;
+  max-width: 250px;
+  object-fit: contain;
+}
+
+/* Button spacing */
+.register-as-teacher button,
+.register-as-student button {
+  margin-top: 20px;
+}
 
 .btn-wrapper {
   margin-top: 20px;
@@ -766,6 +793,8 @@
     overflow-y: auto;
   }
 
+  
+
   .admin-dashboard-content{
     padding: 40px;
     margin: 0;
@@ -865,6 +894,16 @@
   .dashboard-content, .admin-dashboard-content {
     padding: 1rem;
     align-items: center;
+  }
+
+   .register {
+    flex-direction: column;
+  }
+
+  .register-as-teacher,
+  .register-as-student {
+    width: 100%;
+    height: 380px;
   }
 
   .card {
