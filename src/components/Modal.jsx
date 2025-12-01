@@ -68,7 +68,7 @@ export default function Modal(props) {
         try {
             console.log(`selected unit: ${selectedUnit}`)
             const response = await axios.get(
-                `http://127.0.0.1:8000/api/quiz/generate-quiz/e1495fc3-f74d-4e29-8cef-f1a241683857/${selectedUnit}`
+                `quiz/generate-quiz/e1495fc3-f74d-4e29-8cef-f1a241683857/${selectedUnit}`
             );
             setGeneratedQuiz(true); 
             setGeneratedQuizId(response.data.quiz); 
