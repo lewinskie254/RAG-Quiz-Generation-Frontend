@@ -1,4 +1,4 @@
-import Button from '../components/Button'; 
+import Button from '../components/Button.jsx'; 
 import { useNavigate } from 'react-router';
 
 export default function Registration() {
