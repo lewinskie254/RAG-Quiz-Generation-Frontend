@@ -1,16 +1,20 @@
-import { useContext, useEffect, useState } from 'react'; 
+import { useEffect, useState } from 'react'; 
 import { useParams } from 'react-router';
 import Title from '../components/Title';
 import SidePanelBtn from '../components/SidePanelBtn';
 import AdminDashListView from '../components/AdminDashListView';
 import axios from '../api/axios';
-import AuthContext from '../context/AuthProvider';
 
-export default function AdminQuizManagementDash(props) {
+export default function AdminQuizManagementDash() {
     const {unitId} = useParams()
-    const teacher_id = props.other; 
     const [quizzes, setQuizzes] = useState([]); 
-    const [unit, setUnit] = useState({}); 
+    const [unit, setUnit] = useState({});
+    const [teacher_id, setTeacherId] = useState(""); 
+   
+   useEffect(() => {
+        const id = localStorage.getItem("teacherId"); 
+        setTeacherId(id); 
+    }, [])
 
     useEffect(()=> {
         const fetchData = async() => {

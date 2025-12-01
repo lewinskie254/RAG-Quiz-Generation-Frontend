@@ -35,8 +35,8 @@ const Login = () => {
       const teacherId = response.data.teacher_id; 
       const access = response.data.access; 
       const refresh = response.data.refresh; 
-      console.log(response.data)
-
+      
+      localStorage.setItem("teacherId", teacherId); 
       localStorage.setItem("refreshToken", refresh);
 
       setUser(loggedInUser);
