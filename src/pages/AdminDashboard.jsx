@@ -2,7 +2,7 @@ import '../css/components.css'
 import SidePanelBtn from '../components/SidePanelBtn';
 import Title from '../components/Title';
 import AdminDashListView from '../components/AdminDashListView';
-import Button from "../components/Button.jsx"
+import Button from "../components/CoolButton.jsx"
 import Modal from '../components/Modal';
 import { useState, useEffect } from 'react';
 import axios from 'axios';

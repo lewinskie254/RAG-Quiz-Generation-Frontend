@@ -1,6 +1,6 @@
 import InputField from "../components/InputField";
 import "../css/components.css";
-import Button from '../components/Button.jsx'; 
+import Button from '../components/CoolButton.jsx'; 
 import Title from "../components/Title";
 import LoginOrRegister from "../components/LoginOrRegister";
 import { useState, useEffect} from "react";
