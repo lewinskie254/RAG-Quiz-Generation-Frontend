@@ -48,7 +48,7 @@ const AdminQuizView = (props) => {
 
     const fetchAllUnits = async() => {
         try {
-            const response = await axios.get(`/api/unit/show-all-units/`)
+            const response = await axios.get(`/unit/show-all-units/`)
             setUnits(response.data.units); 
             console.log(response.data.units)
         }catch (e) {
