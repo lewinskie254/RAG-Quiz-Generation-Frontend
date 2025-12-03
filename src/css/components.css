@@ -19,12 +19,13 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(275px, 100%), 1fr));
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 
 
 .select-class {
-  width: 90%;
+  min-width: 70%;
   padding: 0.8rem 1rem;
   font-size: 1rem;
   margin-bottom: 1rem;
@@ -103,13 +104,15 @@
     padding: 5% 10%;
     border-radius: 10px;
     box-shadow: 10px 10px 10px var(--box-shadow-color) inset;
+    border: 3px solid var(--shaded-white);
 }
 
 
 /* ---------------Input Field Component ----------------------*/ 
 
 .input-field{
-  padding: 10% 5%;
+  min-width: 70%;
+  padding: 5% 5%;
   font-size: 1rem;
   margin-bottom: 1rem;
   border: none; 
@@ -123,7 +126,7 @@
 }
 
 .registration-success {
-  padding: 20px;
+  padding: 5%;
   background-color: var(--light-green-color);
 }
 
@@ -510,7 +513,7 @@
 }
 
 .modal form select {
-  padding: 20px;
+  padding: 5%;
   font-size: 1.2em;
   margin-bottom: 1rem;
   width: 100%;

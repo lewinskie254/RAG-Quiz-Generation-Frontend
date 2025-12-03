@@ -118,8 +118,8 @@ const StudentRegister = () => {
       <div className="register">
         <div className="input-div">
             <Title title="Student Registration Page" />
-            <div className="input-section">
-                <form onSubmit={handleRegister}>
+            <div className="registration-input-section">
+                <form onSubmit={handleRegister} >
                     <InputField
                         placeholder="Full Names"
                         value={name}
@@ -128,16 +128,16 @@ const StudentRegister = () => {
                     />
 
                     <InputField
+                        placeholder="Username"
+                        value={username}
+                        onChange={setUsername}
+                        req={true}
+                    />
+                    <InputField
                         placeholder="Phone Number"
                         type="text"
                         value={phoneNumber}
                         onChange={setPhoneNumber}
-                    />
-
-                    <InputField
-                        placeholder="Username"
-                        value={username}
-                        onChange={setUsername}
                         req={true}
                     />
 
@@ -147,7 +147,7 @@ const StudentRegister = () => {
                         value={password}
                         onChange={setPassword}
                         req={true}
-                    />
+                    /> 
 
                     <InputField
                         placeholder="Confirm Password"
@@ -156,6 +156,7 @@ const StudentRegister = () => {
                         onChange={setConfirmPassword}
                         req={true}
                     /> 
+                
 
                     <select
                         className="select-class"
