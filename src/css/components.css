@@ -15,19 +15,12 @@
 }
 
 
-.login{
+.login, .register{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(275px, 100%), 1fr));
   min-height: 100vh;
 }
 
-
-/* Login wrapper */
-.register {
-  display: flex;
-  width: 100%;
-  height: 100%;
-}
 
 
 .select-class {
@@ -56,19 +49,20 @@
 
 .admin-quiz-view {
   flex: 1;
-  height: 100vh;        /* <– Match viewport height */
-  overflow-y: auto;     /* <– ONLY this scrolls */
+  min-height: 100vh;        
+  overflow-y: auto;    
   padding: 20px;
 }
 
 /* Right side: input form */
 .input-div {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  background-color: var(--bluish-color); /* optional */
+  background-color: var(--bluish-color); 
 }
 
 
@@ -189,7 +183,20 @@
 }
 
 
-/* smething else */
+/* admin register page particulars */
+
+.registration-input-section {
+  max-height: 70vh;
+  overflow-y: scroll;
+  background-color: var(--shaded-white);
+  padding: 5% 10%;
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px var(--box-shadow-color) inset;
+  border: 3px solid var(--shaded-white);
+}
+
+
+
 
 .title-wrapper {
     justify-content: center;
@@ -454,18 +461,18 @@
   overflow: auto;
 }
 
-.scroll-view::-webkit-scrollbar, .admin-scroll-view::-webkit-scrollbar{
+.scroll-view::-webkit-scrollbar, .admin-scroll-view::-webkit-scrollbar, .registration-input-section::-webkit-scrollbar{
   width: 1em;
   padding-left: 5px;
 }
 
-.scroll-view::-webkit-scrollbar-track, .admin-scroll-view::-webkit-scrollbar-track {
+.scroll-view::-webkit-scrollbar-track, .admin-scroll-view::-webkit-scrollbar-track, .registration-input-section::-webkit-scrollbar-track {
     background: var(--light-green-color);
     border-radius: 10px;
 }
 
-.scroll-view::-webkit-scrollbar-thumb, .admin-scroll-view::-webkit-scrollbar-thumb {
-    background: var(--dark-green-color);
+.scroll-view::-webkit-scrollbar-thumb, .admin-scroll-view::-webkit-scrollbar-thumb, .registration-input-section::-webkit-scrollbar-thumb{
+    background: var(--bluish-color);
     border-radius: 10px;
 }
 
