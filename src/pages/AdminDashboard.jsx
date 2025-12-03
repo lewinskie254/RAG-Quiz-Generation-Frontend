@@ -2,7 +2,6 @@ import '../css/components.css'
 import SidePanelBtn from '../components/SidePanelBtn';
 import Title from '../components/Title';
 import AdminDashListView from '../components/AdminDashListView';
-import Button from "../components/CoolButton.jsx"
 import Modal from '../components/Modal';
 import { useState, useEffect } from 'react';
 import axios from '../api/axios.jsx';
@@ -95,6 +94,7 @@ const AdminDashboard = () => {
         setCourses([])
         setTeacherDetails({})
         setStudents([])
+        navigate('/')
         localStorage.clear();
         setAuth({ 
             student_id: null, 
@@ -103,7 +103,6 @@ const AdminDashboard = () => {
             refresh: null, 
             user: null,  
         });
-        navigate('/')
     }
 
 
