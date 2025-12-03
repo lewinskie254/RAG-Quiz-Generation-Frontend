@@ -62,7 +62,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: 5%;
   background-color: var(--bluish-color); 
 }
 
@@ -285,9 +285,47 @@
   display: flex;
   flex-direction: column;
 }
+.btn-wrapper-dash{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.image-btn{
+  padding: 0;
+  align-items: center;
+}
+
+.btn-wrapper-dash img{
+  max-width: 15%;
+  cursor: pointer;
+}
+
+.btn-dash{
+  padding: 5%;
+  font: 1.5em;
+}
+.with-img{
+  gap: 5%;
+  color: var(--bluish-color);
+  font-family: var(--bebas-font-family);
+  font-size: 2em;
+}
+
+.with-img img:hover {
+  background-color: var(--bluish-color);
+}
+
+.with-img img {
+  border: var(--bluish-color) 4px solid;
+  padding: 1%;
+  border-radius: 50%;
+  transform: all .5s ease;
+}
+
 
 .quiz-generator{
-  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
 }
 
 .admin-cards{

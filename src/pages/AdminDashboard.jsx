@@ -7,9 +7,12 @@ import Modal from '../components/Modal';
 import { useState, useEffect } from 'react';
 import axios from '../api/axios.jsx';
 import { useParams } from 'react-router';
+import { useNavigate } from 'react-router';
+import logOutUrl from '../assets/logout.svg'
 
 
 const AdminDashboard = () => {
+    const navigate = useNavigate()
     const {adminId} = useParams()
     const [modalVisible, setModalVisible] = useState(false); 
     const [quizzes, setQuizzes] = useState([]); 
@@ -85,6 +88,23 @@ const AdminDashboard = () => {
         }
     }
 
+    const handleLogout = () => {
+        setQuizzes([]) 
+        setUnits([])
+        setCourses([])
+        setTeacherDetails({})
+        setStudents([])
+        localStorage.clear();
+        setAuth({ 
+            student_id: null, 
+            teacher_id: null, 
+            access: null, 
+            refresh: null, 
+            user: null,  
+        });
+        navigate('/')
+    }
+
 
     return (
         <div className="container">
@@ -100,7 +120,13 @@ const AdminDashboard = () => {
 
                 <div className="admin-dashboard-content">
                     <div className="quiz-generator">
-                        <Button name="Generate Quiz" onClick={showModal} />
+                        <div className="btn-wrapper-dash">
+                            <button className="btn-dash btn" onClick={showModal}> Generate Quiz</button>
+                        </div>
+                        <div className="btn-wrapper-dash with-img">
+                            <p>Logout: </p>
+                            <img src={logOutUrl} onClick={handleLogout} />
+                        </div>
                     </div>
                     {modalVisible && (
                         <Modal visible={modalVisible} id ={adminId} onClose={() => setModalVisible(false)} />

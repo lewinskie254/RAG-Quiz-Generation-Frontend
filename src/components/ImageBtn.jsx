@@ -1,9 +1,9 @@
 import { Link } from "react-router";
 
-const ImageBtn = (props) => {
+const ImageBtn = ({onClick, imgUrl}) => {
     return (
-        <button onClick={props.onClick} className="image-btn">
-            <img src={props.imgUrl} /> 
+        <button onClick={onClick} className="image-btn">
+            <img src={imgUrl} /> 
         </button>
     )
 }
