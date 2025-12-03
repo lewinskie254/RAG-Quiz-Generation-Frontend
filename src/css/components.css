@@ -276,6 +276,8 @@
 
 .admin-dashboard{ 
   display: flex; 
+  background-color: var(--bluish-color);
+  min-height: 100vh;
 }
 
 .admin-dashboard-content{
@@ -283,6 +285,7 @@
   flex: 1; 
   flex-direction: column;
   overflow-y: scroll;
+  background-color: var(--pure-white);
 }
 
 
