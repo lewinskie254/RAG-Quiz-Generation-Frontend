@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
-const AdminDashListView = (props) => {
+const AdminDashQuizListView = (props) => {
     return (
         <Link to={props.nextLink} className='a-tag'>
-            <div className="card-scroll-view dash-list-view">
-                <div className="scroll-view-list-tile">
+            <div className="card-scroll-view">
+                <div className="dash-quiz-view">
                     <p className="list-tile-tile">{props.title}</p>
                     <p className='list-tile-contents'>{props.unitName}</p>
                 </div>
@@ -13,4 +13,4 @@ const AdminDashListView = (props) => {
     )
 }
 
-export default AdminDashListView;
+export default AdminDashQuizListView;

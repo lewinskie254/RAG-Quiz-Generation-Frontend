@@ -9,6 +9,7 @@ import axios from '../api/axios.jsx';
 import { useParams } from 'react-router';
 import { useNavigate } from 'react-router';
 import logOutUrl from '../assets/logout.svg'
+import AdminDashQuizListView from '../components/AdminDashQuizListView.jsx';
 
 
 const AdminDashboard = () => {
@@ -108,8 +109,8 @@ const AdminDashboard = () => {
 
     return (
         <div className="container">
-            <div className="dashboard">
-                <aside className="panel">
+            <div className="admin-dashboard">
+                <aside className="admin-panel">
                     <ul className="side-panel">
                         <Title title="Event Planners Alliance"/>
                         <hr className='side-panel-underline'/>
@@ -131,28 +132,28 @@ const AdminDashboard = () => {
                     {modalVisible && (
                         <Modal visible={modalVisible} id ={adminId} onClose={() => setModalVisible(false)} />
                     )}
-                <div className="admin-cards">
-                         <div className="admin-dash-card">
-                    <h1 className='blue card-heading'>My Quizzes</h1>
-                    <div className="admin-scroll-view">
-                        {
-                            quizzes.map((quiz, index) => (
-                                <AdminDashListView key={index} title={quiz.id} unitName={showByUnitName(quiz.unit)} nextLink = {`/admin-quiz/${quiz.id}`}/>
-                            ))
-                        }
+                    <div className="admin-cards">
+                        <div className="admin-dash-card">
+                            <h1 className='blue card-heading'>My Quizzes</h1>
+                            <div className="admin-scroll-view">
+                                {
+                                    quizzes.map((quiz, index) => (
+                                        <AdminDashQuizListView key={index} title={quiz.id} unitName={showByUnitName(quiz.unit)} nextLink = {`/admin-quiz/${quiz.id}`}/>
+                                    ))
+                                }
+                            </div>
+                        </div>
+                        <div className="admin-dash-card">
+                            <h1 className='blue card-heading'>My Students</h1>
+                            <div className="admin-scroll-view">
+                                {
+                                    student.map((student, index) => (
+                                        <AdminDashListView key = {index} title={`Grade : ${student.grade}`} unitName={student.name} />
+                                    ))
+                                }
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                   <div className="admin-dash-card">
-                    <h1 className='blue card-heading'>My Students</h1>
-                    <div className="admin-scroll-view">
-                        {
-                            student.map((student, index) => (
-                                <AdminDashListView key = {index} title={`Grade : ${student.grade}`} unitName={student.name} />
-                            ))
-                        }
-                    </div>
-                  </div>
-                </div>
                 </div>
             </div>
         </div>
