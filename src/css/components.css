@@ -15,10 +15,7 @@
 }
 
 
-
-
-/* Container for the whole page */
-.login {
+.login{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(275px, 100%), 1fr));
   min-height: 100vh;
@@ -80,9 +77,9 @@
     font-family: "Bebas Neue", sans-serif;
     color: var(--pure-white);
     background-color: var(--bluish-color);
-    padding: 10px 40px;
+    padding: 5% 10%;
     font-size: 2rem;
-    border-radius: 5px;
+    border-radius: 5%;
     cursor: pointer;
     transition: all .5s ease;
 }
@@ -91,12 +88,14 @@
     font-family: "Bebas Neue", sans-serif;
     color: var(--bluish-color); 
     background-color: var(--pure-white);
-    padding: 10px 40px;
+    padding: 5% 10%;
     font-size: 2rem;
-    border-radius: 5px;
+    border-radius: 5%;
     cursor: pointer;
     transition: all .5s ease;
 }
+
+
 
 
 .btn:hover {
@@ -142,48 +141,55 @@
   color: red;
 }
 
+/* registration page */
+
 /* Full screen container */
 .container {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
 }
 
-/* Two equal halves */
-.register {
-  display: flex;
-  width: 100%;
-  height: 100%;
-}
 
 /* Left + right side */
 .register-as-teacher,
 .register-as-student {
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 30px;
-  padding: 40px;
+  padding: 5%;
 }
 
 /* Images */
 .register-as-teacher img,
 .register-as-student img {
-  width: 100%;
-  max-width: 250px;
-  object-fit: contain;
+  width: 50%;
+  object-fit: cover;
 }
 
 /* Button spacing */
 .register-as-teacher button,
 .register-as-student button {
-  margin-top: 20px;
+  margin-top: 5%;
 }
 
 .btn-wrapper {
-  margin-top: 20px;
+  margin-top: 5%;
 }
+
+.teacher-div {
+  background-color: var(--bluish-color);
+}
+
+.register-page{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+
+/* smething else */
 
 .title-wrapper {
     justify-content: center;
@@ -897,12 +903,6 @@
     flex-direction: column;
   }
 
-  .register-as-teacher,
-  .register-as-student {
-    width: 100%;
-    height: 380px;
-  }
-
   .card {
     width: 100%;
     margin: 15px 0;
@@ -914,6 +914,10 @@
 
   .scroll-view {
     height: 170px;
+  }
+
+  .btn, .inverse {
+    font-size: 1.4rem;
   }
 }
 
