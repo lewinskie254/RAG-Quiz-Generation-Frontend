@@ -83,6 +83,7 @@ const StudentDashboard = () => {
                 </aside>
 
                 <div className="dashboard-content">
+                <div className="admin-cards">
                   <ProgressCard 
                         currentScore="1"
                         outOfTerm = "Over"
@@ -115,6 +116,7 @@ const StudentDashboard = () => {
                         }
                     </div>
                   </div>
+                </div>
                 </div>
             </div>
         </div>
